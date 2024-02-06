@@ -1,10 +1,8 @@
 import dbConnect from "./db/index.js";
 import app from "./app.js";
-import dotenv from "dotenv";
 
-dotenv.config({ path: "./.env" });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8800;
 
 dbConnect()
    .then(() => {

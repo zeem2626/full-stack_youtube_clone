@@ -1,17 +1,22 @@
 import express, { urlencoded } from "express";
+import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import videoRoutes from "./routes/video.route.js";
 import commentRoutes from "./routes/comment.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+dotenv.config({ path: "./.env" });
+
 const app = express();
+console.log((process.env.FRONTEND_URL));
+
 app.use(
    cors({
-      origin: [
-         "https://zeem-youtube-tawny.vercel.app/",
-         "http://localhost:5173",
-      ],
+      // origin: [
+      //   `"${process.env.FRONTEND_URL}"`,
+      //   //  "https://zeem-youtube-tawny.vercel.app/",
+      // ],
       credentials: true,
       // exposedHeaders: ['set-cookie'],
    })
