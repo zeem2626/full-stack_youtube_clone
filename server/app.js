@@ -14,7 +14,7 @@ console.log(process.env.FRONTEND_URL);
 app.use(
    cors({
       origin: [
-        "https://zeem-youtube-tawny.vercel.app",
+        "https://full-stack-youtube-clone-sigma.vercel.app",
          process.env.FRONTEND_URL,
          "http://localhost:4173",
          "http://localhost:5173",
