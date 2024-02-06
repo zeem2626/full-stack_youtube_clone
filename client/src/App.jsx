@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./utilities/Theme.js";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess, loginFailure } from "./redux/userSlice.js";
@@ -32,14 +32,10 @@ const Wrapper = styled.div`
    z-index: 1;
 `;
 
-
-
 function App() {
    const [darkMode, setDarkMode] = useState(1);
    const [display, setDisplay] = useState(1);
    const dispatch = useDispatch();
-   let user = useSelector((state) => state.user.value);
-   const loading = useSelector((state) => state.loading.status);
    const refresh = useSelector((state) => state.loading.refresh);
 
    const getCurrentUser = async () => {
