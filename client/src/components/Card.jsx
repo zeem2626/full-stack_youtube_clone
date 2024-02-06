@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import axios from "axios";
+import conf from "../../conf/conf";
 
 const Container = styled.div`
    color: ${({ theme }) => theme.textSoft};
@@ -91,7 +92,8 @@ const Card = ({
    // console.log(thumbnail);
    const getChannel = async () => {
       // if(userId){
-      const res = await axios.get(`/api/user/${userId}`);
+      const res = await axios.get(`${conf.API}/user/${userId}`);
+      // const res = await axios.get(`/api/user/${userId}`);
       // console.log(userId);
       setChannelInfo(res.data.data);
       // }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { format } from "timeago.js";
 import axios from "axios";
+import conf from "../../conf/conf";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -45,7 +46,8 @@ const RecommendatioCard = ({
 
    const getChannel = async () => {
       try {
-         const res = await axios.get(`/api/user/${userId}`);
+         const res = await axios.get(`${conf.API}/user/${userId}`);
+        //  const res = await axios.get(`/api/user/${userId}`);
          //  console.log(res.data?.data);
          setChannel(res.data?.data);
       } catch (error) {
@@ -90,7 +92,8 @@ const RecommendatioSection = ({ videoId, videoTags, size }) => {
    const getRecommendation = async () => {
       if (videoTags) {
          const qTags = videoTags.join();
-         const res = await axios.get(`/api/video/tags?tags=${qTags}`);
+        //  const res = await axios.get(`/api/video/tags?tags=${qTags}`);
+         const res = await axios.get(`${conf.API}/video/tags?tags=${qTags}`);
 
          //  console.log(res.data?.data);
          setRecommendationVideos(res.data?.data);

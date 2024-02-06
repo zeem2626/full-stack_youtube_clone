@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./utilities/Theme.js";
@@ -6,7 +6,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess, loginFailure } from "./redux/userSlice.js";
-import { loadingStart, loadingEnd } from "./redux/loadingSlice.js";
+import conf from "../conf/conf.js";
 
 // Components
 import Menu from "./components/Menu";
@@ -44,7 +44,8 @@ function App() {
 
    const getCurrentUser = async () => {
       try {
-         const res = await axios.get("/api/user/current-user", {
+         const res = await axios.get(`${conf.API}/user/current-user`, {
+        //  const res = await axios.get("/api/user/current-user", {
             withCredentials: true,
          });
 

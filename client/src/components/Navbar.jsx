@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import conf from "../../conf/conf";
 import { loginFailure } from "../redux/userSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/initialize";
@@ -105,7 +106,8 @@ const Navbar = ({ display, setDisplay }) => {
          .catch((error) => {
             console.log(error);
          });
-      await axios.get("/api/user/auth/logout", { withCredentials: true });
+      await axios.get(`${conf.API}/user/auth/logout`, { withCredentials: true });
+      // await axios.get("/api/user/auth/logout", { withCredentials: true });
       dispatch(loginFailure());
       navigate(-1);
    };
@@ -120,7 +122,8 @@ const Navbar = ({ display, setDisplay }) => {
       let searchedVideos = [];
       let uniqueVideoId = [];
 
-      let res = await axios.get(`/api/video/search?q=${q}`);
+      let res = await axios.get(`${conf.API}/video/search?q=${q}`);
+      // let res = await axios.get(`/api/video/search?q=${q}`);
       res.data?.data?.forEach((elem) => {
          searchedVideos.push(elem);
          //  if (!uniqueVideoId.includes(elem._id)) searchedVideos.push(elem);
@@ -129,7 +132,8 @@ const Navbar = ({ display, setDisplay }) => {
       // let searchedVideos = new Set(res);
 
       const qTags = q.replaceAll(" ", ",");
-      res = await axios.get(`/api/video/tags?tags=${qTags}`);
+      res = await axios.get(`${conf.API}/video/tags?tags=${qTags}`);
+      // res = await axios.get(`/api/video/tags?tags=${qTags}`);
       res.data?.data?.forEach((elem) => {
          if (!uniqueVideoId.includes(elem._id)) searchedVideos.push(elem);
       });

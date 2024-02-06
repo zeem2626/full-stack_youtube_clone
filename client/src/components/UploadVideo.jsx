@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase/initialize";
 import axios from "axios";
+import conf from "../../conf/conf";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
@@ -172,7 +173,8 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
       }
 
       const res = await axios.post(
-         "/api/video/upload",
+        `${conf.API}/video/upload`,
+        //  "/api/video/upload",
          { title, tags, description, videoUrl, thumbnailUrl },
          { withCredentials: true }
       );

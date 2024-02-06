@@ -7,30 +7,8 @@ export default defineConfig(({ mode }) => {
    return {
       // vite config
       build: {
-        // generate .vite/manifest.json in outDir
-        manifest: true,
-        rollupOptions: {
-          // overwrite default .html entry
-          // input: './src/main.jsx',
-        },
-        chunkSizeWarningLimit: 600,
-      },
-      server: {
-        //  proxy: {
-        //     // "/api": env.VITE_PROXY,
-        //     // "/api": "https://youtube-rfvy.onrender.com/",
-        //  },
-        
-        proxy: {
-          "/api": {
-            // target: env.VITE_PROXY,
-            // target : "https://youtube-rfvy.onrender.com",
-            target : "https://youtube-r5sb.onrender.com",
-            // target : "http://localhost:8800",
-               changeOrigin: true,
-              //  rewrite: (path) => path.replace(/^\/api/, ""),
-            },
-         },
+         // manifest: true,
+         chunkSizeWarningLimit: 600,
       },
 
       plugins: [react()],

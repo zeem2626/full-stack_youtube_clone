@@ -1,5 +1,6 @@
 import { React, useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import conf from "../../conf/conf";
 import styled from "styled-components";
 import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,11 +27,13 @@ const Home = ({ type }) => {
       try {
          let res;
           if (type == "profile") {
-             res = await axios.get(`/api/video/get/my/${user._id}`, {
-                withCredentials: true,
-             });
+             res = await axios.get(`${conf.API}/video/get/my/${user?._id}`, {
+            //  res = await axios.get(`/api/video/get/my/${user?._id}`, {
+              withCredentials: true,
+            });
           } else {
-             res = await axios.get(`/api/video/${type}`, {
+             res = await axios.get(`${conf.API}/video/${type}`, {
+            //  res = await axios.get(`/api/video/${type}`, {
                 withCredentials: true,
              });
           }
@@ -51,10 +54,10 @@ const Home = ({ type }) => {
 
    return (
       <Container>
-         {videos.length <= 0 ? (
+         {videos?.length <= 0 ? (
             <h1>No videos available </h1>
          ) : (
-            videos.map((elem, i) => (
+            videos?.map((elem, i) => (
                <Card
                   key={elem._id}
                   videoId={elem._id}

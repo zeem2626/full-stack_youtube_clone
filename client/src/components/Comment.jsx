@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Image from "./utilities/CircularIconImage";
 import axios from "axios";
+import conf from "../../conf/conf";
 
 // Icons
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -92,7 +93,8 @@ const UserComment = ({
 
    const getUser = async () => {
       try {
-         const res = await axios.get(`/api/user/${userId}`);
+        //  const res = await axios.get(`/api/user/${userId}`);
+         const res = await axios.get(`${conf.API}/user/${userId}`);
          setChannel(res.data?.data);
       } catch (error) {
          setChannel({});
@@ -104,7 +106,8 @@ const UserComment = ({
    };
 
    const deleteComment = async () => {
-      const res = await axios.delete(`/api/comment/${commentId}`, {
+      const res = await axios.delete(`${conf.API}/comment/${commentId}`, {
+      // const res = await axios.delete(`/api/comment/${commentId}`, {
          withCredentials: true,
       });
       getAllComments();
@@ -161,7 +164,8 @@ const Comment = ({ videoId }) => {
    const user = useSelector((state) => state.user.value);
 
    const getAllComments = async () => {
-      const res = await axios.get(`/api/comment/${videoId}`);
+      // const res = await axios.get(`/api/comment/${videoId}`);
+      const res = await axios.get(`${conf.API}/comment/${videoId}`);
       // console.log(res.data?.data);
       setComments(res.data?.data);
    };
