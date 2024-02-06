@@ -17,7 +17,8 @@ export default defineConfig(({ mode }) => {
       },
       server: {
          proxy: {
-            "/api": env.VITE_PROXY,
+            // "/api": env.VITE_PROXY,
+            "/api": "https://youtube-rfvy.onrender.com/",
          },
 
         //  proxy: {
