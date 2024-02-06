@@ -6,22 +6,31 @@ export default defineConfig(({ mode }) => {
 
    return {
       // vite config
+      build: {
+        // generate .vite/manifest.json in outDir
+        manifest: true,
+        rollupOptions: {
+          // overwrite default .html entry
+          // input: './src/main.jsx',
+        },
+        chunkSizeWarningLimit: 600,
+      },
       server: {
-        //  proxy: {
-        //     "/api": env.VITE_PROXY,
-        //  },
-
          proxy: {
-            // string shorthand
-            // "/foo": "http://localhost:4567",
-            // with options
-            "/api": {
-              //  target: "http://jsonplaceholder.typicode.com",  
-               target: env.VITE_PROXY,
-               changeOrigin: true,
-              //  rewrite: (path) => path.replace(/^\/api/, ""),
-            },
+            "/api": env.VITE_PROXY,
          },
+
+        //  proxy: {
+        //     // string shorthand
+        //     // "/foo": "http://localhost:4567",
+        //     // with options
+        //     "/api": {
+        //       //  target: "http://jsonplaceholder.typicode.com",  
+        //        target: env.VITE_PROXY,
+        //        changeOrigin: true,
+        //       //  rewrite: (path) => path.replace(/^\/api/, ""),
+        //     },
+        //  },
       },
 
       plugins: [react()],

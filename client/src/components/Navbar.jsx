@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import youtubeLogo from "/youtube1-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -8,7 +7,7 @@ import { loginFailure } from "../redux/userSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/initialize";
 import UploadVideo from "./UploadVideo";
-
+import youtubeLogo from "/youtubeLogo.png";
 // Icons
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -29,12 +28,15 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-   height: 5.5rem;
+   height: 3rem;
+   /* padding: 1rem; */
+   margin-left: 1rem;
 `;
 
 const HamburgerLogoWrapper = styled.div`
    display: flex;
    align-items: center;
+   font-size: 1.8rem;
    padding: 0rem 1.5rem;
 `;
 const Button = styled.div`
@@ -87,6 +89,7 @@ const Icon = styled.button`
 `;
 
 const Navbar = ({ display, setDisplay }) => {
+  //  const youtubeLogo = "";
    const [openUploadVideo, setOpenUploadVideo] = useState(false);
    const [q, setQ] = useState("");
    const user = useSelector((state) => state.user.value);

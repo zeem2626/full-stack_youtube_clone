@@ -6,31 +6,30 @@ import { fetchSuccess, fetchFailure } from "../redux/videosSlice";
 import axios from "axios";
 
 // Icons
-import youtubeLogo from "/youtube1-logo.png";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+// import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import HistoryIcon from "@mui/icons-material/History";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
-import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
-import ScheduleIcon from "@mui/icons-material/Schedule";
-import ContentCutIcon from "@mui/icons-material/ContentCut";
+// import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
+// import ScheduleIcon from "@mui/icons-material/Schedule";
+// import ContentCutIcon from "@mui/icons-material/ContentCut";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
-import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
+// import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import MovieIcon from "@mui/icons-material/Movie";
-import OnlinePredictionIcon from "@mui/icons-material/OnlinePrediction";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-import NewspaperIcon from "@mui/icons-material/Newspaper";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import DryCleaningIcon from "@mui/icons-material/DryCleaning";
-import PodcastsIcon from "@mui/icons-material/Podcasts";
-import SettingsIcon from "@mui/icons-material/Settings";
+// import LocalMallIcon from "@mui/icons-material/LocalMall";
+// import MusicNoteIcon from "@mui/icons-material/MusicNote";
+// import MovieIcon from "@mui/icons-material/Movie";
+// import OnlinePredictionIcon from "@mui/icons-material/OnlinePrediction";
+// import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+// import NewspaperIcon from "@mui/icons-material/Newspaper";
+// import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+// import LightbulbIcon from "@mui/icons-material/Lightbulb";
+// import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+// import PodcastsIcon from "@mui/icons-material/Podcasts";
+// import SettingsIcon from "@mui/icons-material/Settings";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 const Container = styled.div`
