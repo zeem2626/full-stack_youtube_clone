@@ -27,12 +27,12 @@ const Home = ({ type }) => {
       try {
          let res;
           if (type == "profile") {
-             res = await axios.get(`${conf.API}/video/get/my/${user?._id}`, {
+             res = await axios.get(`${conf.api}/video/get/my/${user?._id}`, {
             //  res = await axios.get(`/api/video/get/my/${user?._id}`, {
               withCredentials: true,
             });
           } else {
-             res = await axios.get(`${conf.API}/video/${type}`, {
+             res = await axios.get(`${conf.api}/video/${type}`, {
             //  res = await axios.get(`/api/video/${type}`, {
                 withCredentials: true,
              });

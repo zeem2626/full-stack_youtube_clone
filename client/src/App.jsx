@@ -40,7 +40,7 @@ function App() {
 
    const getCurrentUser = async () => {
       try {
-         const res = await axios.get(`${conf.API}/api/user/current-user`, {
+         const res = await axios.get(`${conf.api}/user/current-user`, {
         //  const res = await axios.get("/api/user/current-user", {
             withCredentials: true,
          });
