@@ -16,22 +16,20 @@ export default defineConfig(({ mode }) => {
         chunkSizeWarningLimit: 600,
       },
       server: {
-         proxy: {
-            // "/api": env.VITE_PROXY,
-            "/api": "https://youtube-rfvy.onrender.com/",
-         },
-
         //  proxy: {
-        //     // string shorthand
-        //     // "/foo": "http://localhost:4567",
-        //     // with options
-        //     "/api": {
-        //       //  target: "http://jsonplaceholder.typicode.com",  
-        //        target: env.VITE_PROXY,
-        //        changeOrigin: true,
-        //       //  rewrite: (path) => path.replace(/^\/api/, ""),
-        //     },
+        //     // "/api": env.VITE_PROXY,
+        //     // "/api": "https://youtube-rfvy.onrender.com/",
         //  },
+        
+        proxy: {
+          "/api": {
+            // target: env.VITE_PROXY,
+            target : "https://youtube-rfvy.onrender.com",
+            // target : "http://localhost:8800",
+               changeOrigin: true,
+              //  rewrite: (path) => path.replace(/^\/api/, ""),
+            },
+         },
       },
 
       plugins: [react()],
