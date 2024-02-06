@@ -24,7 +24,8 @@ export default defineConfig(({ mode }) => {
         proxy: {
           "/api": {
             // target: env.VITE_PROXY,
-            target : "https://youtube-rfvy.onrender.com",
+            // target : "https://youtube-rfvy.onrender.com",
+            target : "https://youtube-r5sb.onrender.com/",
             // target : "http://localhost:8800",
                changeOrigin: true,
               //  rewrite: (path) => path.replace(/^\/api/, ""),
