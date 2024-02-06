@@ -152,7 +152,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
 
    const getHomeVideos = async () => {
       try {
-         const res = await axios.get(`${conf.API}/video/random`);
+         const res = await axios.get(`${conf.api}/video/random`);
         //  const res = await axios.get("/api/video/random");
          dispatch(fetchSuccess(res.data?.data));
       } catch (error) {
@@ -162,7 +162,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    };
    const getTrendingVideos = async () => {
       try {
-         const res = await axios.get(`${conf.API}/video/trend`);
+         const res = await axios.get(`${conf.api}/video/trend`);
         //  const res = await axios.get("/api/video/trend");
          dispatch(fetchSuccess(res.data?.data));
       } catch (error) {
@@ -172,7 +172,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    };
    const getSubscriptionVideos = async () => {
       try {
-         const res = await axios.get(`${conf.API}/video/subscribed`, {
+         const res = await axios.get(`${conf.api}/video/subscribed`, {
         //  const res = await axios.get("/api/video/subscribed", {
             withCredentials: true,
          });

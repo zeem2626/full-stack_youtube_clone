@@ -94,7 +94,7 @@ const UserComment = ({
    const getUser = async () => {
       try {
         //  const res = await axios.get(`/api/user/${userId}`);
-         const res = await axios.get(`${conf.API}/user/${userId}`);
+         const res = await axios.get(`${conf.api}/user/${userId}`);
          setChannel(res.data?.data);
       } catch (error) {
          setChannel({});
@@ -106,7 +106,7 @@ const UserComment = ({
    };
 
    const deleteComment = async () => {
-      const res = await axios.delete(`${conf.API}/comment/${commentId}`, {
+      const res = await axios.delete(`${conf.api}/comment/${commentId}`, {
       // const res = await axios.delete(`/api/comment/${commentId}`, {
          withCredentials: true,
       });
@@ -165,7 +165,7 @@ const Comment = ({ videoId }) => {
 
    const getAllComments = async () => {
       // const res = await axios.get(`/api/comment/${videoId}`);
-      const res = await axios.get(`${conf.API}/comment/${videoId}`);
+      const res = await axios.get(`${conf.api}/comment/${videoId}`);
       // console.log(res.data?.data);
       setComments(res.data?.data);
    };

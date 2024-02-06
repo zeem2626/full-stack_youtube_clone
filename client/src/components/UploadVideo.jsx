@@ -173,7 +173,7 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
       }
 
       const res = await axios.post(
-        `${conf.API}/video/upload`,
+        `${conf.api}/video/upload`,
         //  "/api/video/upload",
          { title, tags, description, videoUrl, thumbnailUrl },
          { withCredentials: true }

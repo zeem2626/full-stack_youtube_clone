@@ -46,7 +46,7 @@ const RecommendatioCard = ({
 
    const getChannel = async () => {
       try {
-         const res = await axios.get(`${conf.API}/user/${userId}`);
+         const res = await axios.get(`${conf.api}/user/${userId}`);
         //  const res = await axios.get(`/api/user/${userId}`);
          //  console.log(res.data?.data);
          setChannel(res.data?.data);
@@ -93,7 +93,7 @@ const RecommendatioSection = ({ videoId, videoTags, size }) => {
       if (videoTags) {
          const qTags = videoTags.join();
         //  const res = await axios.get(`/api/video/tags?tags=${qTags}`);
-         const res = await axios.get(`${conf.API}/video/tags?tags=${qTags}`);
+         const res = await axios.get(`${conf.api}/video/tags?tags=${qTags}`);
 
          //  console.log(res.data?.data);
          setRecommendationVideos(res.data?.data);

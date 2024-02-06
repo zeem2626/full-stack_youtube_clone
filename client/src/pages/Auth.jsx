@@ -89,7 +89,7 @@ const Auth = () => {
             return;
          }
 
-         const res = await axios.post(`${conf.API}/user/auth/signin`, {
+         const res = await axios.post(`${conf.api}/user/auth/signin`, {
         //  const res = await axios.post("/api/user/auth/signin", {
             usernameOrEmail: usernameOrEmail.current.value,
             password: signinPassword.current.value,
@@ -116,7 +116,7 @@ const Auth = () => {
          // const credential = GoogleAuthProvider.credentialFromResult(result);
          const user = result.user;
 
-         const res = await axios.post(`${conf.API}/user/auth/googleSignin`, {
+         const res = await axios.post(`${conf.api}/user/auth/googleSignin`, {
         //  const res = await axios.post("/api/user/auth/googleSignin", {
             uid: user.uid,
             fullName: user.displayName,
@@ -156,7 +156,7 @@ const Auth = () => {
             return;
          }
 
-         const res = await axios.post(`${conf.API}/user/auth/signup`, {
+         const res = await axios.post(`${conf.api}/user/auth/signup`, {
         //  const res = await axios.post("/api/user/auth/signup", {
             userName: userName.current.value,
             fullName: fullName.current.value,

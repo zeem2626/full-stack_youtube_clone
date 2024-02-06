@@ -159,7 +159,7 @@ const Profile = () => {
          }
 
          const res = await axios.post(
-            `${conf.API}/user/update-user`,
+            `${conf.api}/user/update-user`,
             // "/api/user/update-user",
             { userName, fullName, email },
             { withCredentials: true }
@@ -183,7 +183,7 @@ const Profile = () => {
 
       const res = await axios.post(
          //  "/api/user/update-avatar",
-         `${conf.API}/user/update-avatar`,
+         `${conf.api}/user/update-avatar`,
          { avatar: avatarUrl },
          { withCredentials: true }
       );
@@ -211,7 +211,7 @@ const Profile = () => {
 
    const getMyVideos = async () => {
       try {
-         const res = await axios.get(`${conf.API}/video/get/my/${user?._id}`, {
+         const res = await axios.get(`${conf.api}/video/get/my/${user?._id}`, {
             //  const res = await axios.get(`/api/video/get/my/${user?._id}`, {
             withCredentials: true,
          });
