@@ -59,7 +59,7 @@ const login = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 24 * 3600000,
+      maxAge: 10 * 24 * 3600000,
    };
 
    const { ...userData } = user._doc;
@@ -105,7 +105,7 @@ const googleSignin = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 24 * 3600000,
+      maxAge: 10 * 24 * 3600000,
    };
 
    res.status(200)
@@ -125,7 +125,7 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 24 * 3600000,
+      maxAge: 10 * 24 * 3600000,
    };
 
    console.log(req.cookies);
