@@ -133,7 +133,7 @@ const Videos = () => {
    const likeVideo = async () => {
       try {
          loginAlert();
-         const res = await axios.get(`${conf.api}/user/like/${videoId}`);
+         const res = await axios.get(`${conf.api}/user/like/${videoId}` ,{withCredentials:true});
          //  const res = await axios.get(`/api/user/like/${videoId}`);
          setVideo(res.data?.data);
       } catch (error) {
@@ -144,7 +144,7 @@ const Videos = () => {
    const dislikeVideo = async () => {
       try {
          loginAlert();
-         const res = await axios.get(`${conf.api}/user/dislike/${videoId}`);
+         const res = await axios.get(`${conf.api}/user/dislike/${videoId}` ,{withCredentials:true});
         //  const res = await axios.get(`/api/user/dislike/${videoId}`);
          setVideo(res.data?.data);
       } catch (error) {
@@ -157,10 +157,10 @@ const Videos = () => {
          loginAlert();
          let res;
          if (channel.subscribers.includes(user?._id)) {
-            res = await axios.get(`${conf.api}/user/unsubscribe/${channel._id}`);
+            res = await axios.get(`${conf.api}/user/unsubscribe/${channel._id}` ,{withCredentials:true});
             // res = await axios.get(`/api/user/unsubscribe/${channel._id}`);
          } else {
-            res = await axios.get(`${conf.api}/user/subscribe/${channel._id}`);
+            res = await axios.get(`${conf.api}/user/subscribe/${channel._id}` ,{withCredentials:true});
             // res = await axios.get(`/api/user/subscribe/${channel._id}`);
          }
 
