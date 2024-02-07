@@ -20,23 +20,20 @@ import { format } from "timeago.js";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Container = styled.div`
-   width: 98%;
-   min-height: 150vh;
    display: flex;
-   flex-grow: 1;
-   /* flex-wrap: wrap; */
-   /* padding: 2rem 0; */
-   /* padding-bottom: 7rem; */
    margin: 1rem auto;
 `;
 
-const VideoAndCommentSection = styled.div``;
-const VideoWrapper = styled.video`
+const VideoAndCommentSection = styled.div`
+  width: 80%;
+  margin: 0 2rem;
+`;
+const VideoWrapper = styled.div`
+`
+const Video = styled.video`
    width: 100%;
-   max-height: 40vw;
    border: none;
    border-radius: 3rem;
-   /* background-color: ${({ theme }) => theme.bgLighter}; */
 `;
 const Button = styled.button`
    display: flex;
@@ -112,13 +109,13 @@ const Videos = () => {
    const getVideoAndChannel = async () => {
       try {
          const addView = await axios.get(`${conf.api}/video/view/${videoId}`);
-        //  const addView = await axios.get(`/api/video/view/${videoId}`);
+         //  const addView = await axios.get(`/api/video/view/${videoId}`);
          const videoRes = await axios.get(`${conf.api}/video/get/${videoId}`);
-        //  const videoRes = await axios.get(`/api/video/get/${videoId}`);
+         //  const videoRes = await axios.get(`/api/video/get/${videoId}`);
          setVideo(videoRes.data?.data);
 
          const channelRes = await axios.get(
-          `${conf.api}/user/${videoRes.data.data?.userId}`
+            `${conf.api}/user/${videoRes.data.data?.userId}`
             // `/api/user/${videoRes.data.data?.userId}`
          );
          setChannel(channelRes.data?.data);
@@ -134,7 +131,9 @@ const Videos = () => {
    const likeVideo = async () => {
       try {
          loginAlert();
-         const res = await axios.get(`${conf.api}/user/like/${videoId}` ,{withCredentials:true});
+         const res = await axios.get(`${conf.api}/user/like/${videoId}`, {
+            withCredentials: true,
+         });
          //  const res = await axios.get(`/api/user/like/${videoId}`);
          setVideo(res.data?.data);
       } catch (error) {
@@ -145,8 +144,10 @@ const Videos = () => {
    const dislikeVideo = async () => {
       try {
          loginAlert();
-         const res = await axios.get(`${conf.api}/user/dislike/${videoId}` ,{withCredentials:true});
-        //  const res = await axios.get(`/api/user/dislike/${videoId}`);
+         const res = await axios.get(`${conf.api}/user/dislike/${videoId}`, {
+            withCredentials: true,
+         });
+         //  const res = await axios.get(`/api/user/dislike/${videoId}`);
          setVideo(res.data?.data);
       } catch (error) {
          console.log(error);
@@ -158,10 +159,15 @@ const Videos = () => {
          loginAlert();
          let res;
          if (channel.subscribers.includes(user?._id)) {
-            res = await axios.get(`${conf.api}/user/unsubscribe/${channel._id}` ,{withCredentials:true});
+            res = await axios.get(
+               `${conf.api}/user/unsubscribe/${channel._id}`,
+               { withCredentials: true }
+            );
             // res = await axios.get(`/api/user/unsubscribe/${channel._id}`);
          } else {
-            res = await axios.get(`${conf.api}/user/subscribe/${channel._id}` ,{withCredentials:true});
+            res = await axios.get(`${conf.api}/user/subscribe/${channel._id}`, {
+               withCredentials: true,
+            });
             // res = await axios.get(`/api/user/subscribe/${channel._id}`);
          }
 
@@ -212,7 +218,7 @@ const Videos = () => {
          }
 
          const res = await axios.delete(`${conf.api}/video/${videoId}`, {
-        //  const res = await axios.delete(`/api/video/${videoId}`, {
+            //  const res = await axios.delete(`/api/video/${videoId}`, {
             withCredentials: true,
          });
 
@@ -242,13 +248,15 @@ const Videos = () => {
          )}
          <Container>
             <VideoAndCommentSection>
-               <VideoWrapper
-                  width="100%"
-                  height="100%"
-                  src={video.videoUrl}
-                  autoPlay
-                  controls
-               ></VideoWrapper>
+               <VideoWrapper>
+                  <Video
+                    //  width="100%"
+                    //  height="100%"
+                     src={video.videoUrl}
+                     autoPlay
+                     controls
+                  ></Video>
+               </VideoWrapper>
 
                <h1 style={{ padding: "1rem 0.2rem" }}>
                   {video.title || "Title"}

@@ -6,12 +6,13 @@ import conf from "../../conf/conf";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-   max-width: 25%;
+   /* max-width: 20%; */
+   /* width: 100%; */
 `;
 const Wrapper = styled.div`
    display: flex;
    /* max-width: 40rem; */
-   padding: 0.4rem 0 0.4rem 2rem;
+   /* padding: 0.4rem 0 0.4rem 2rem; */
    color: ${({ theme }) => theme.text};
 `;
 const Img = styled.img`
