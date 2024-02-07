@@ -178,11 +178,12 @@ const Auth = () => {
    };
 
    useEffect(() => {
-      if (user) {
+     if (user) {
+        console.log("Auth");
          navigate("/");
       }
       console.log("Auth Login");
-   }, []);
+   }, [user]);
 
    return (
       <Container>

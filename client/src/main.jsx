@@ -53,10 +53,10 @@ const router = createBrowserRouter([
          //   element: <Home />,
          //   // element: <Home type="search" />,
          // },
-         {
-            path: "test",
-            element: <Test />,
-         },
+        //  {
+        //     path: "test",
+        //     element: <Test />,
+        //  },
          {
             path: "*",
             element: <Error />,

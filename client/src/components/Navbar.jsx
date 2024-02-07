@@ -17,6 +17,7 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { fetchSuccess } from "../redux/videosSlice";
+import { refresh } from "../redux/loadingSlice";
 
 const Container = styled.div`
    display: flex;
@@ -112,6 +113,7 @@ const Navbar = ({ display, setDisplay }) => {
       console.log(res.data.message);
       // await axios.get("/api/user/auth/logout", { withCredentials: true });
       dispatch(loginFailure());
+      dispatch(refresh())
       // navigate(-1);
    };
 

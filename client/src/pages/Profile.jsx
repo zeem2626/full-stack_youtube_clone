@@ -241,7 +241,7 @@ const Profile = () => {
          getMyVideos();
       }
       console.log("Profile");
-   }, [user]);
+   }, [user, loading]);
 
    return (
       <>
