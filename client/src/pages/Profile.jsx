@@ -95,9 +95,12 @@ const Profile = () => {
    const [editProfile, setEditProfile] = useState(true);
    const [readonly, setReadonly] = useState(true);
 
-   const [userName, setUserName] = useState("");
-   const [fullName, setFullName] = useState("");
-   const [email, setEmail] = useState("");
+   const [userName, setUserName] = useState(user?.userName);
+   const [fullName, setFullName] = useState(user?.fullName);
+   const [email, setEmail] = useState(user?.email);
+  //  const [userName, setUserName] = useState("");
+  //  const [fullName, setFullName] = useState("");
+  //  const [email, setEmail] = useState("");
    const [avatar, setAvatar] = useState(null);
 
    const imageRef = useRef("");
@@ -228,17 +231,17 @@ const Profile = () => {
    };
 
    useEffect(() => {
-      if (!user) {
+      if (!user && !loading) {
          navigate(-1);
       }
-      if (user) {
+      if ( user) {
          setUserName(user?.userName);
          setFullName(user?.fullName);
          setEmail(user?.email);
          getMyVideos();
       }
       console.log("Profile");
-   }, []);
+   }, [user]);
 
    return (
       <>

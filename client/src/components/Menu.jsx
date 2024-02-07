@@ -44,7 +44,7 @@ const Container = styled.div`
    height: 90vh;
    /* max-height: 50rem; */
    position: sticky;
-   top: 5rem;
+   top: 6rem;
 
    @media only screen and (max-width: 600px) {
       position: fixed;

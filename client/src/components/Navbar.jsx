@@ -24,13 +24,15 @@ const Container = styled.div`
    background-color: ${({ theme }) => theme.bg};
    align-items: center;
    position: sticky;
-   top: 0px;
+   top: 0rem;
+   padding:  1rem;
    z-index: 2;
 `;
 
 const Img = styled.img`
    height: 3rem;
    /* padding: 1rem; */
+
    margin-left: 1rem;
 `;
 
@@ -38,7 +40,7 @@ const HamburgerLogoWrapper = styled.div`
    display: flex;
    align-items: center;
    font-size: 1.8rem;
-   padding: 0rem 1.5rem;
+   gap: 0.5rem;
 `;
 const Button = styled.div`
    display: flex;
@@ -100,13 +102,14 @@ const Navbar = ({ display, setDisplay }) => {
    const signout = async () => {
       signOut(auth)
          .then(() => {
-            console.log("Sign-out successful.");
+            console.log("Google Sign-out");
             // dispatch(loginFailure());
          })
          .catch((error) => {
             console.log(error);
          });
-      await axios.get(`${conf.api}/user/auth/logout`, { withCredentials: true });
+      const res = await axios.get(`${conf.api}/user/auth/logout`, { withCredentials: true });
+      console.log(res.data.message);
       // await axios.get("/api/user/auth/logout", { withCredentials: true });
       dispatch(loginFailure());
       // navigate(-1);

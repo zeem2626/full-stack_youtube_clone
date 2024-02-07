@@ -24,7 +24,7 @@ const router = Router();
 router.post("/auth/signup", signup);
 router.post("/auth/signin", login);
 router.post("/auth/googleSignin", googleSignin);
-router.get("/auth/logout", logout);
+router.get("/auth/logout", verifyUser, logout);
 
 // Secure Routes
 router.get("/current-user", verifyUser, getCurrentUser);

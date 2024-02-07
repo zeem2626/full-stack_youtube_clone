@@ -101,7 +101,12 @@ const googleSignin = asyncHandler(async (req, res) => {
    const { ...userData } = user._doc;
    delete userData.password;
 
-   const options = { httpOnly: true, secure: true, maxAge: 60 * 60000 };
+   const options = {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 3600000,
+   };
 
    res.status(200)
       .cookie("accessToken", accessToken, options)
@@ -115,8 +120,17 @@ const googleSignin = asyncHandler(async (req, res) => {
 
 const logout = asyncHandler(async (req, res) => {
    const user = req.user;
+
+   const options = {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 3600000,
+   };
+
+   console.log(req.cookies);
    res.status(200)
-      .clearCookie("accessToken")
+      .clearCookie("accessToken", options)
       .json(new ApiResponse(200, "User loged out"));
 });
 
