@@ -182,7 +182,7 @@ const Comment = ({ videoId }) => {
          return;
       }
       const res = await axios.post(
-         `/api/comment/${videoId}`,
+         `${conf.api}/comment/${videoId}`,
          { comment: inputComment.current.value },
          { withCredentials: true }
       );
