@@ -14,11 +14,9 @@ console.log(process.env.FRONTEND_URL);
 app.use(
    cors({
       origin: [
-        "https://full-stack-youtube-clone-sigma.vercel.app",
-         process.env.FRONTEND_URL,
-         "https://test-deploy-sooty-delta.vercel.app",
-         "http://localhost:4173",
+        process.env.CLIENT_URL,
          "http://localhost:5173",
+         "http://localhost:4173",
       ],
       credentials: true,
    })

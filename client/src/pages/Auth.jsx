@@ -3,15 +3,11 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { loginSuccess } from "../redux/userSlice.js";
 import { useNavigate } from "react-router-dom";
-import {
-   signInWithPopup,
-   GoogleAuthProvider,
-   onAuthStateChanged,
-} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase/initialize.js";
 import axios from "axios";
 import conf from "../../conf/conf.js";
-import { loadingEnd, loadingStart, refresh } from "../redux/loadingSlice.js";
+import { loadingEnd, refresh } from "../redux/loadingSlice.js";
 
 const Container = styled.div`
    display: flex;
@@ -89,16 +85,20 @@ const Auth = () => {
             return;
          }
 
-         const res = await axios.post(`${conf.api}/user/auth/signin`, {
-        //  const res = await axios.post("/api/user/auth/signin", {
-            usernameOrEmail: usernameOrEmail.current.value,
-            password: signinPassword.current.value,
-         });
+         const res = await axios.post(
+            `${conf.api}/user/auth/signin`,
+            {
+               //  const res = await axios.post("/api/user/auth/signin", {
+               usernameOrEmail: usernameOrEmail.current.value,
+               password: signinPassword.current.value,
+            },
+            { withCredentials: true }
+         );
 
          // Signed in
          console.log("User signed in");
-         //  console.log(res.data.data);
-         dispatch(loginSuccess(res.data?.data));
+         console.log(res.data.data.user);
+         dispatch(loginSuccess(res.data?.data.user));
          dispatch(refresh());
          navigate(-1);
          // alert("Signed in");
@@ -117,7 +117,7 @@ const Auth = () => {
          const user = result.user;
 
          const res = await axios.post(`${conf.api}/user/auth/googleSignin`, {
-        //  const res = await axios.post("/api/user/auth/googleSignin", {
+            //  const res = await axios.post("/api/user/auth/googleSignin", {
             uid: user.uid,
             fullName: user.displayName,
             email: user.email,
@@ -157,7 +157,7 @@ const Auth = () => {
          }
 
          const res = await axios.post(`${conf.api}/user/auth/signup`, {
-        //  const res = await axios.post("/api/user/auth/signup", {
+            //  const res = await axios.post("/api/user/auth/signup", {
             userName: userName.current.value,
             fullName: fullName.current.value,
             email: email.current.value,

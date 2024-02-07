@@ -46,11 +46,11 @@ function App() {
          });
 
          console.log("User available");
-         //  console.log(res.data?.data?.user);
+          // console.log(res.data?.data?.user);
          dispatch(loginSuccess(res.data?.data?.user));
       } catch (error) {
          dispatch(loginFailure());
-         /* console.log(error) */
+          console.log(error)
       }
    };
 

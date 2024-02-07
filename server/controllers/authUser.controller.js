@@ -55,7 +55,7 @@ const login = asyncHandler(async (req, res) => {
    const accessToken = user.generateAccessToken();
 
    // const options = { httpOnly: true, secure: true, maxAge: 10 };
-   const options = { httpOnly: true, secure: true, maxAge: 120 * 60000 };
+   const options = { httpOnly: true, secure: true, maxAge: 1200 * 60000 };
 
    const { ...userData } = user._doc;
    delete userData.password;

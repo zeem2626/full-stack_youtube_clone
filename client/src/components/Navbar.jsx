@@ -109,7 +109,7 @@ const Navbar = ({ display, setDisplay }) => {
       await axios.get(`${conf.api}/user/auth/logout`, { withCredentials: true });
       // await axios.get("/api/user/auth/logout", { withCredentials: true });
       dispatch(loginFailure());
-      navigate(-1);
+      // navigate(-1);
    };
 
    const searchVideos = async (e) => {
