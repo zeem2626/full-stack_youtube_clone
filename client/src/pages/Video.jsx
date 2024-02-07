@@ -21,11 +21,12 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Container = styled.div`
    width: 98%;
-   min-height: 100vh;
+   min-height: 150vh;
    display: flex;
+   flex-grow: 1;
    /* flex-wrap: wrap; */
    /* padding: 2rem 0; */
-   padding-bottom: 7rem;
+   /* padding-bottom: 7rem; */
    margin: 1rem auto;
 `;
 
