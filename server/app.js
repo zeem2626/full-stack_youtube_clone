@@ -15,7 +15,6 @@ app.use(
    cors({
       origin: [
          `${process.env.CLIENT_URL}`,
-        //  "https://zeem-youtube.vercel.app",
          "http://localhost:5173",
          "http://localhost:4173",
       ],
