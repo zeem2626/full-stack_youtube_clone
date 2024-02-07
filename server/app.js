@@ -9,12 +9,11 @@ import cors from "cors";
 dotenv.config({ path: "./.env" });
 
 const app = express();
-console.log(process.env.CLIENT_DOMAIN);
 
 app.use(
    cors({
       origin: [
-         `${process.env.CLIENT_URL}`,
+         `${process.env.CLIENT_DOMAIN}`,
          "http://localhost:5173",
          "http://localhost:4173",
       ],
