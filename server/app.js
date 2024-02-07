@@ -9,7 +9,7 @@ import cors from "cors";
 dotenv.config({ path: "./.env" });
 
 const app = express();
-console.log(process.env.CLIENT_URL);
+console.log(process.env.CLIENT_DOMAIN);
 
 app.use(
    cors({
