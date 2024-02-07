@@ -7,7 +7,7 @@ const signup = asyncHandler(async (req, res, next) => {
    const { fullName, userName, email, password } = req.body;
 
    let invalid = [userName, fullName, email, password].some(
-      (elem) => (!elem || elem.trim() == "")
+      (elem) => !elem || elem.trim() == ""
    );
    if (invalid) {
       throw new ApiError(400, "Give required details");
@@ -55,7 +55,12 @@ const login = asyncHandler(async (req, res) => {
    const accessToken = user.generateAccessToken();
 
    // const options = { httpOnly: true, secure: true, maxAge: 10 };
-   const options = { httpOnly: true, secure: true, maxAge: 1200 * 60000 };
+   const options = {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 24 * 3600000,
+   };
 
    const { ...userData } = user._doc;
    delete userData.password;
@@ -87,7 +92,7 @@ const googleSignin = asyncHandler(async (req, res) => {
          userName: uid,
          email,
          googleUserId: uid,
-         password: ""
+         password: "",
       });
    }
 
