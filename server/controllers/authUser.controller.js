@@ -54,13 +54,13 @@ const login = asyncHandler(async (req, res) => {
 
    const accessToken = user.generateAccessToken();
 
-   // const options = { httpOnly: true, secure: true, maxAge: 10 };
    const options = {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      maxAge: 10 * 24 * 3600000,
-   };
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 5 * 24  *  60  *  60  *  1000,
+    //         1day   1hour  1min    1sec
+ };
 
    const { ...userData } = user._doc;
    delete userData.password;
@@ -105,7 +105,8 @@ const googleSignin = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 10 * 24 * 3600000,
+      maxAge: 5 * 24  *  60  *  60  *  1000,
+      //         1day   1hour  1min    1sec
    };
 
    res.status(200)

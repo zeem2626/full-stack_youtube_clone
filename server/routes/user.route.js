@@ -24,7 +24,6 @@ const router = Router();
 router.post("/auth/signup", signup);
 router.post("/auth/signin", login);
 router.post("/auth/googleSignin", googleSignin);
-router.get("/auth/logout", verifyUser, logout);
 
 // Secure Routes
 router.get("/current-user", verifyUser, getCurrentUser);
@@ -38,5 +37,7 @@ router.get("/unsubscribe/:channelId", verifyUser, unsubscribe);
 router.get("/like/:videoId", verifyUser, likeVideo);
 router.get("/dislike/:videoId", verifyUser, dislikeVideo);
 router.get("/:id", getUser);
+
+router.get("/auth/logout", verifyUser, logout);
 
 export default router;

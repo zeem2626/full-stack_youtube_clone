@@ -21,7 +21,19 @@ const getCurrentUser = asyncHandler(async (req, res) => {
       throw new ApiError(400, "Unauthorized access");
    }
 
-   res.status(200).json(new ApiResponse(200, "Current user ", { user }));
+   const accessToken = user.generateAccessToken();
+
+   const options = {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 5 * 24 * 60 * 60 * 1000,
+      //         1day   1hour  1min    1sec
+   };
+
+   res.status(200)
+      .cookie("accessToken", accessToken, options)
+      .json(new ApiResponse(200, "Current user verified", { user }));
 });
 
 const changePassword = asyncHandler(async (req, res) => {
@@ -66,18 +78,23 @@ const updateUserDetails = asyncHandler(async (req, res) => {
    res.status(200).json(new ApiResponse(200, "User updated", updatedUser));
 });
 
-const updateAvatar =  asyncHandler(async (req, res) => {
-  const avatar = req.body.avatar;
+const updateAvatar = asyncHandler(async (req, res) => {
+   const avatar = req.body.avatar;
 
-  if(!avatar || avatar.trim()==""){
-    throw new ApiError(400, "Avatar file missing");
-  }
+   if (!avatar || avatar.trim() == "") {
+      throw new ApiError(400, "Avatar file missing");
+   }
 
-  const avatarUpdated = await User.findByIdAndUpdate(req.user._id, {avatar}, {new : true});
+   const avatarUpdated = await User.findByIdAndUpdate(
+      req.user._id,
+      { avatar },
+      { new: true }
+   );
 
-  res.status(200).json(new ApiResponse(200, "Avatar updated successfully", avatarUpdated));
-
-})
+   res.status(200).json(
+      new ApiResponse(200, "Avatar updated successfully", avatarUpdated)
+   );
+});
 
 const deleteUser = asyncHandler(async (req, res) => {
    const deletedUser = await User.findByIdAndDelete(req.user._id);
@@ -103,12 +120,12 @@ const subscribe = asyncHandler(async (req, res) => {
    );
 
    res.status(200).json(
-      new ApiResponse(200, "Subscribed successfully",updatedChannel)
+      new ApiResponse(200, "Subscribed successfully", updatedChannel)
    );
 });
 
 const unsubscribe = asyncHandler(async (req, res) => {
-  const channelId = req.params.channelId;
+   const channelId = req.params.channelId;
    const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       {
@@ -126,7 +143,7 @@ const unsubscribe = asyncHandler(async (req, res) => {
    );
 
    res.status(200).json(
-      new ApiResponse(200, "Unsubscribed successfully",updatedChannel)
+      new ApiResponse(200, "Unsubscribed successfully", updatedChannel)
    );
 });
 
