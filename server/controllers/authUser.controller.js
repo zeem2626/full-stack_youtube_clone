@@ -126,7 +126,6 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 10 * 24 * 3600000,
    };
 
    console.log(req.cookies);
