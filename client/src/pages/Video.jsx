@@ -60,6 +60,7 @@ const Video = styled.video`
 `;
 const Button = styled.button`
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: ${({ theme, subscribe }) =>
     subscribe ? theme.text : theme.bgLighter};
@@ -67,15 +68,20 @@ const Button = styled.button`
     subscribe ? theme.bgLighter : theme.text};
   /* color: ${({ theme }) => theme.text}; */
   border: none;
-  gap: 0.5rem;
-  //   font-size: 1.6rem;
+  gap: 0.4rem;
+  /* font-size: 1.4rem; */
   /* font-weight: 600; */
-  padding: 0.9rem 1.2rem;
-  margin: 0.2rem 1rem;
+  padding: 0.7rem 1rem;
+  /* margin: 0.2rem 1rem; */
+  /* border: 1px solid red; */
   border-radius: 2rem;
   //   overflow: hidden;
   //   text-overflow: ellipsis;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+
+  }
 `;
 
 const P = styled.div`
@@ -108,12 +114,17 @@ const ButtonsContainer = styled.div`
   justify-content: flex-end;
   flex-grow: 1;
   padding: 1rem 0rem;
+  gap: 3rem;
+  /* justify-content: space-around; */
+
   /* border: 2px solid green; */
 
+  justify-content: flex-end;
   @media only screen and (max-width: 600px) {
     justify-content: flex-start;
     overflow: scroll;
     /* flex-wrap: wrap; */
+    gap: 1.5rem;
     /* width: 90%; */
     /* border: 1px solid red; */
   }
@@ -362,7 +373,7 @@ const Videos = () => {
 
             <Description>
               <h4>
-                {video.views} views {format(video.createdAt)}
+                {video.views} views . {format(video.createdAt)}
               </h4>
               <DescriptionContent maxheight={maxheight}>
                 {video.description}
