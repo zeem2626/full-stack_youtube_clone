@@ -15,72 +15,80 @@ const Container = styled.div`
    border-radius: 2rem;
    width: 99vw;
    height: 100vh;
-   background-color: #3335;
+   background-color: ${({ theme }) => theme.bg}7;;
+   /* background-color: #3339; */
    /* opacity: 0.3; */
    z-index: 3;
 `;
 
 const TextArea = styled.textarea`
-   width: 90%;
-   margin: auto;
-   margin: 1rem auto 5rem auto;
+   width: 100%;
+   padding: 1rem 1rem;
+   margin-bottom: 3rem;
    background-color: transparent;
    border: 1px solid ${({ theme }) => theme.bgLighter};
    color: ${({ theme }) => theme.text};
    outline: none;
-   padding: 1.5rem 1rem;
    border-radius: 1rem;
 `;
 const Label = styled.label`
-   width: 90%;
-   margin: auto;
+   width: 100%;
+   margin-bottom: 1rem;
    color: ${({ theme }) => theme.textSoft};
 `;
 const Input = styled.input`
-   width: 90%;
-   margin: auto;
-   margin: 1rem auto 4rem auto;
+   width: 100%;
+   margin-bottom: 3rem;
+   padding: 1rem 1rem;
    background-color: transparent;
    color: ${({ theme }) => theme.text};
    border: 1px solid ${({ theme }) => theme.bgLighter};
    outline: none;
-   padding: 1.5rem 1rem;
    border-radius: 1rem;
    cursor: pointer;
 `;
+const BodyWrapper = styled.div`
+  padding: 1rem 0;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  flex-direction: column;
+
+`
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
    border-radius: 2rem;
    padding: 1rem 0;
    background-color: ${({ theme }) => theme.bg};
-   width: 90%;
+   width: 99%;
+   /* margin: auto; */
    max-width: 100rem;
 `;
 
-const Wrapper2 = styled.div`
+const HeadingWrapper = styled.div`
    display: flex;
    justify-content: space-between;
-   padding: 0 1rem;
+   padding:  1rem 2rem;
 `;
 const H1 = styled.h1`
    width: 90%;
-   font-size: 3rem;
+   font-size: 2.2rem;
    font-weight: 600;
    text-align: center;
    color: ${({ theme }) => theme.text};
 `;
 
 const Button = styled.button`
-   width: 90%;
-   margin: auto;
-   margin-bottom: 5rem;
+   width: 100%;
+   /* margin: auto; */
+   padding: 1rem 1rem;
+   margin-bottom: 3rem;
    background-color: transparent;
    border: 1px solid ${({ theme }) => theme.bgLighter};
    color: ${({ theme }) => theme.text};
    font-size: 1.8rem;
    outline: none;
-   padding: 1.5rem 1rem;
    border-radius: 1rem;
    cursor: pointer;
 `;
@@ -173,8 +181,8 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
       }
 
       const res = await axios.post(
-        `${conf.api}/video/upload`,
-        //  "/api/video/upload",
+         `${conf.api}/video/upload`,
+         //  "/api/video/upload",
          { title, tags, description, videoUrl, thumbnailUrl },
          { withCredentials: true }
       );
@@ -192,7 +200,7 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
    return (
       <Container>
          <Wrapper>
-            <Wrapper2>
+            <HeadingWrapper>
                <H1> Upload Video </H1>
                <h2
                   style={{ cursor: "pointer" }}
@@ -200,35 +208,37 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
                >
                   X
                </h2>
-            </Wrapper2>
-            {/* <div> */}
-            <Label>
-               Video
-               {uploadingProgress > 0 ? (
-                  <UploadingSpan>
-                     &nbsp; Uploading : {uploadingProgress} %
-                  </UploadingSpan>
-               ) : (
-                  ""
-               )}
-            </Label>
-            <Input type="file" accept="video" ref={videoRef} />
-            <Input type="text" ref={titleRef} placeholder="Title" />
-            <TextArea
-               cols="30"
-               rows="10"
-               ref={descriptionRef}
-               placeholder="Description"
-            ></TextArea>
-            <Input
-               type="text"
-               ref={tagsRef}
-               placeholder="Tags seperated with comma (,)"
-            />
-            <Label>Thumbnail</Label>
-            <Input type="file" ref={thumbnailRef} />
+            </HeadingWrapper>
 
-            <Button onClick={() => manageUpload()}> Upload </Button>
+            <BodyWrapper>
+               <Label>
+                  Video
+                  {uploadingProgress > 0 ? (
+                     <UploadingSpan>
+                        &nbsp; Uploading : {uploadingProgress} %
+                     </UploadingSpan>
+                  ) : (
+                     ""
+                  )}
+               </Label>
+               <Input type="file" accept="video" ref={videoRef} />
+               <Input type="text" ref={titleRef} placeholder="Title" />
+               <TextArea
+                  cols="30"
+                  rows="10"
+                  ref={descriptionRef}
+                  placeholder="Description"
+               ></TextArea>
+               <Input
+                  type="text"
+                  ref={tagsRef}
+                  placeholder="Tags seperated with comma (,)"
+               />
+               <Label>Thumbnail</Label>
+               <Input type="file" ref={thumbnailRef} />
+
+               <Button onClick={() => manageUpload()}> Upload </Button>
+            </BodyWrapper>
          </Wrapper>
       </Container>
    );

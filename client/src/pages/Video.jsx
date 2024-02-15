@@ -7,7 +7,9 @@ import VideoDeleteConfirmation from "../components/VideoDeleteConfirmation.jsx";
 
 // Icons
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import ReplyIcon from "@mui/icons-material/Reply";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import Image from "../components/utilities/CircularIconImage";
@@ -21,19 +23,40 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Container = styled.div`
    display: flex;
-   margin: 1rem auto;
+   /* margin: 1rem auto; */
+   margin-top: 1rem;
+   min-height: 100vh;
+   padding-bottom: 2rem;
+
+   @media only screen and (max-width: 600px) {
+      flex-direction: column;
+   }
 `;
 
 const VideoAndCommentSection = styled.div`
-  width: 80%;
-  margin: 0 2rem;
+   width: 72%;
+   /* margin: 0 2rem; */
+   margin: auto;
+
+   @media only screen and (max-width: 600px) {
+      width: 100%;
+   }
 `;
-const VideoWrapper = styled.div`
-`
+const VideoWrapper = styled.div``;
+const VideoDetailsWrapper = styled.div`
+   @media only screen and (max-width: 600px) {
+      width: 97%;
+      margin: auto;
+   }
+`;
 const Video = styled.video`
    width: 100%;
    border: none;
    border-radius: 3rem;
+
+   @media only screen and (max-width: 600px) {
+      border-radius: 0;
+   }
 `;
 const Button = styled.button`
    display: flex;
@@ -59,6 +82,10 @@ const ChannelInfoWrapper = styled.div`
    font-size: 1rem;
    gap: 1rem;
    /* border: 2px solid red; */
+
+   @media only screen and (max-width: 600px) {
+      max-width: 100%;
+   }
 `;
 
 const ButtonsContainer = styled.div`
@@ -67,9 +94,21 @@ const ButtonsContainer = styled.div`
    flex-grow: 1;
    padding: 1rem 0rem;
    /* border: 2px solid green; */
+   
+   @media only screen and (max-width: 600px) {
+     justify-content: flex-start;
+     overflow: scroll;
+      /* flex-wrap: wrap; */
+      /* width: 90%; */
+      /* border: 1px solid red; */
+   }
 `;
 const Wrapper1 = styled.div`
    display: flex;
+
+   @media only screen and (max-width: 600px) {
+      flex-direction: column;
+   }
 `;
 
 const DescriptionContent = styled.div`
@@ -80,6 +119,7 @@ const DescriptionContent = styled.div`
    text-overflow: ellipsis;
 `;
 const Description = styled.div`
+   /* width: 100%; */
    background-color: ${({ theme }) => theme.bgLighter};
    line-height: 2rem;
    font-size: 1.5rem;
@@ -250,81 +290,91 @@ const Videos = () => {
             <VideoAndCommentSection>
                <VideoWrapper>
                   <Video
-                    //  width="100%"
-                    //  height="100%"
+                     //  width="100%"
+                     //  height="100%"
                      src={video.videoUrl}
                      autoPlay
                      controls
                   ></Video>
                </VideoWrapper>
 
-               <h1 style={{ padding: "1rem 0.2rem" }}>
-                  {video.title || "Title"}
-               </h1>
+               <VideoDetailsWrapper>
+                  <h1 style={{ padding: "1rem 0.2rem" }}>
+                     {video.title || "Title"}
+                  </h1>
 
-               <Wrapper1>
-                  <ChannelInfoWrapper>
-                     <Image src={channel.avatar} size="4.5" />
-                     <div>
-                        <h2>{channel.fullName || "Channel name"}</h2>
-                        <p>{channel.subscribers?.length} Subscribers</p>
-                     </div>
-                     <Button subscribe={1} onClick={subscribeChannel}>
-                        {channel.subscribers?.includes(user?._id)
-                           ? "Unsubscribe"
-                           : "Subscribe"}{" "}
-                     </Button>
-                  </ChannelInfoWrapper>
-
-                  <ButtonsContainer>
-                     {channel?._id == user?._id ? (
-                        <Button onClick={() => setDeleteConfirmation(true)}>
-                           <DeleteForeverIcon sx={{ fontSize: "2rem" }} />
+                  <Wrapper1>
+                     <ChannelInfoWrapper>
+                        <Image src={channel.avatar} size="4.5" />
+                        <div>
+                           <h2>{channel.fullName || "Channel name"}</h2>
+                           <p>{channel.subscribers?.length} Subscribers</p>
+                        </div>
+                        <Button subscribe={1} onClick={subscribeChannel}>
+                           {channel.subscribers?.includes(user?._id)
+                              ? "Unsubscribe"
+                              : "Subscribe"}{" "}
                         </Button>
-                     ) : (
-                        ""
-                     )}
-                     <Button onClick={likeVideo}>
-                        <ThumbUpIcon sx={{ fontSize: "2rem" }} />
-                        {video.likes?.length}
-                     </Button>
-                     <Button onClick={dislikeVideo}>
-                        <ThumbDownAltIcon sx={{ fontSize: "2rem" }} />
-                        {video.dislikes?.length}
-                     </Button>
-                     <Button>
-                        <ReplyIcon sx={{ fontSize: "2rem" }} />
-                        Share
-                     </Button>
-                     <Button>
-                        <ScheduleIcon sx={{ fontSize: "2rem" }} /> Watch later
-                     </Button>
-                  </ButtonsContainer>
-               </Wrapper1>
+                     </ChannelInfoWrapper>
 
-               <Description>
-                  <h6>
-                     {video.views} views {format(video.createdAt)}
-                  </h6>
-                  <DescriptionContent maxheight={maxheight}>
-                     {video.description}
-                  </DescriptionContent>
+                     <ButtonsContainer>
+                        {channel?._id == user?._id ? (
+                           <Button onClick={() => setDeleteConfirmation(true)}>
+                              <DeleteForeverIcon sx={{ fontSize: "2rem" }} />
+                           </Button>
+                        ) : (
+                           ""
+                        )}
+                        <Button onClick={likeVideo}>
+                          {
+                            video.likes?.includes(user?._id) ? 
+                            <ThumbUpIcon sx={{ fontSize: "2rem" }} /> :
+                            <ThumbUpOutlinedIcon sx={{ fontSize: "2rem" }} />
+                          }
+                           {video.likes?.length}
+                        </Button>
+                        <Button onClick={dislikeVideo}>
+                          {video.dislikes?.includes(user?._id) ? 
+                           <ThumbDownAltIcon sx={{ fontSize: "2rem" }} />:
+                           <ThumbDownOutlinedIcon sx={{ fontSize: "2rem" }} />
+                          }
+                           {video.dislikes?.length}
+                        </Button>
+                        <Button>
+                           <ReplyIcon sx={{ fontSize: "2rem" }} />
+                           Share
+                        </Button>
+                        <Button>
+                           <ScheduleIcon sx={{ fontSize: "2rem" }} /> Watch
+                           later
+                        </Button>
+                     </ButtonsContainer>
+                  </Wrapper1>
 
-                  <button
-                     style={{
-                        backgroundColor: "transparent",
-                        color: "#aaa",
-                        border: "none",
-                        fontWeight: "600",
-                        fontSize: "1.49rem",
-                        paddingTop: "0.7rem ",
-                     }}
-                     onClick={() => setmaxheight(!maxheight)}
-                  >
-                     {maxheight ? "See More..." : "See Less"}
-                  </button>
-               </Description>
-               <Comment videoId={videoId} />
+                  <Description>
+                     <h6>
+                        {video.views} views {format(video.createdAt)}
+                     </h6>
+                     <DescriptionContent maxheight={maxheight}>
+                        {video.description}
+                     </DescriptionContent>
+
+                     <button
+                        style={{
+                           backgroundColor: "transparent",
+                           color: "#aaa",
+                           border: "none",
+                           fontWeight: "600",
+                           fontSize: "1.49rem",
+                           paddingTop: "0.7rem ",
+                        }}
+                        onClick={() => setmaxheight(!maxheight)}
+                     >
+                        {maxheight ? "See More..." : "See Less"}
+                     </button>
+                  </Description>
+                  <Comment videoId={videoId} />
+               </VideoDetailsWrapper>
             </VideoAndCommentSection>
 
             <RecommendatioSection

@@ -9,12 +9,14 @@ import { fetchFailure, fetchSuccess } from "../redux/videosSlice";
 const Container = styled.div`
    display: flex;
    flex-wrap: wrap;
-   /* justify-content: space-evenly; */
+   justify-content: space-evenly;
    width: 100%;
    min-height: 100vh;
-   padding: 3rem 0rem 5rem 2rem;
+   /* padding: 3rem 0rem 5rem 2rem; */
    gap: 4rem 1.5rem;
    z-index: -1;
+
+   
 `;
 
 const Home = ({ type }) => {

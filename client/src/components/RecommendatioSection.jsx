@@ -6,8 +6,19 @@ import conf from "../../conf/conf";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-   /* max-width: 20%; */
+   display: flex;
+   flex-direction: column;
+   /* overflow: scroll; */
+   width: 26%;
+   gap: 1rem;
    /* width: 100%; */
+
+   @media only screen and (max-width: 600px) {
+      width: 97%;
+      margin: auto;
+      /* padding-bottom: 2rem; */
+      /* border: 1px solid red; */
+   }
 `;
 const Wrapper = styled.div`
    display: flex;
@@ -48,7 +59,7 @@ const RecommendatioCard = ({
    const getChannel = async () => {
       try {
          const res = await axios.get(`${conf.api}/user/${userId}`);
-        //  const res = await axios.get(`/api/user/${userId}`);
+         //  const res = await axios.get(`/api/user/${userId}`);
          //  console.log(res.data?.data);
          setChannel(res.data?.data);
       } catch (error) {
@@ -93,7 +104,7 @@ const RecommendatioSection = ({ videoId, videoTags, size }) => {
    const getRecommendation = async () => {
       if (videoTags) {
          const qTags = videoTags.join();
-        //  const res = await axios.get(`/api/video/tags?tags=${qTags}`);
+         //  const res = await axios.get(`/api/video/tags?tags=${qTags}`);
          const res = await axios.get(`${conf.api}/video/tags?tags=${qTags}`);
 
          //  console.log(res.data?.data);

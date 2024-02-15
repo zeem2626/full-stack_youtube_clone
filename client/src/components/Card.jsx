@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import axios from "axios";
 import conf from "../../conf/conf";
+import Image from "./utilities/CircularIconImage";
 
 const Container = styled.div`
    color: ${({ theme }) => theme.textSoft};
@@ -11,7 +12,7 @@ const Container = styled.div`
    height: 100%;
    cursor: pointer;
    transition: padding-top 0.25s;
-   padding-top: 0.2rem;
+   /* padding-top: 0.2rem; */
 
    &:hover {
       padding-top: 0;
@@ -34,8 +35,11 @@ const Img = styled.img`
    border-radius: 1rem;
    /* height: 12vw; */
    /* @media only screen and (max-width: 600px) {
-    height: 50vw;
-  } */
+     height: 50vw;
+    } */
+   @media only screen and (max-width: 600px) {
+      border-radius: 0;
+   }
 `;
 const ChannelImgWrapper = styled.div`
    width: 10%;
@@ -116,9 +120,11 @@ const Card = ({
             }}
          >
             <Img src={thumbnail} />
+            
             <Wrapper>
                <ChannelImgWrapper>
-                  <ChannelImg src={channelInfo.avatar} />
+                  {/* <ChannelImg src={channelInfo.avatar} /> */}
+                  <Image src={channelInfo.avatar} size="4"/>
                </ChannelImgWrapper>
 
                <Details>

@@ -14,6 +14,7 @@ const Container = styled.div`
    justify-content: center;
    align-items: self-start;
    height: 95vh;
+   /* max-width: 100%; */
 `;
 const Wrapper = styled.div`
    display: flex;
@@ -22,7 +23,7 @@ const Wrapper = styled.div`
    padding: 2rem 1rem 3rem 1rem;
    text-align: center;
    gap: 1.5rem;
-   width: 80%;
+   width: 90%;
    max-width: 50rem;
    margin-top: 5rem;
    border-radius: 1rem;

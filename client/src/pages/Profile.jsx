@@ -14,12 +14,19 @@ import {
 } from "firebase/storage";
 import { storage } from "../firebase/initialize";
 import { fetchSuccess } from "../redux/videosSlice";
+import Image from "../components/utilities/CircularIconImage";
 
 const Container = styled.div`
    display: flex;
    justify-content: center;
    margin-top: 3rem;
    /* z-index: -1; */
+
+   @media only screen and (max-width: 600px) {
+      /* width: 100%; */
+      flex-direction: column;
+      align-items: center;
+   }
 `;
 const InputFile = styled.input`
    border: 1px solid red;
@@ -42,21 +49,34 @@ const Input = styled.input`
    outline: none;
    height: 4.4rem;
    cursor: ${({ readOnly }) => (readOnly ? "" : "pointer")};
+
+   @media only screen and (max-width: 600px) {
+      /* width: 100%; */
+      /* border: 1px solid red; */
+   }
 `;
 
-const Image = styled.img`
-   width: 15rem;
-   height: 15rem;
-   border-radius: 50%;
+const ImageWrapper = styled.div`
    position: absolute;
    z-index: -1;
 `;
+// const Image = styled.img`
+//    width: 15rem;
+//    height: 15rem;
+//    border-radius: 50%;
+//    position: absolute;
+//    z-index: -1;
+// `;
 
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
    gap: 0.4rem;
    margin-left: 1rem;
+
+   @media only screen and (max-width: 600px) {
+      /* align-items: center; */
+   }
 `;
 
 const P = styled.p`
@@ -75,14 +95,19 @@ const P = styled.p`
 const Button = styled.button`
    background-color: ${({ theme }) => theme.bgLighter};
    color: ${({ theme }) => theme.text};
-   width: 40%;
-   max-width: 20rem;
+   width: 90%;
+   /* max-width: 20rem; */
    /* margin: auto; */
    border-radius: 2rem;
    font-size: 1.5rem;
    padding: 0.6rem;
    border: none;
    cursor: pointer;
+
+   @media only screen and (max-width: 600px) {
+      /* width: 100%; */
+      /* max-width: 20rem; */
+   }
 `;
 
 const Profile = () => {
@@ -98,9 +123,9 @@ const Profile = () => {
    const [userName, setUserName] = useState(user?.userName);
    const [fullName, setFullName] = useState(user?.fullName);
    const [email, setEmail] = useState(user?.email);
-  //  const [userName, setUserName] = useState("");
-  //  const [fullName, setFullName] = useState("");
-  //  const [email, setEmail] = useState("");
+   //  const [userName, setUserName] = useState("");
+   //  const [fullName, setFullName] = useState("");
+   //  const [email, setEmail] = useState("");
    const [avatar, setAvatar] = useState(null);
 
    const imageRef = useRef("");
@@ -234,7 +259,7 @@ const Profile = () => {
       if (!user && !loading) {
          navigate(-1);
       }
-      if ( user) {
+      if (user) {
          setUserName(user?.userName);
          setFullName(user?.fullName);
          setEmail(user?.email);
@@ -247,10 +272,14 @@ const Profile = () => {
       <>
          <Container>
             <div>
-               <Image
+               {/* <Image
                   src={user?.avatar}
                   alt=" Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar Update Avatar"
-               ></Image>
+                ></Image> */}
+               <ImageWrapper>
+                  <Image src={user?.avatar} size="15" />
+               </ImageWrapper>
+
                <InputFile
                   type="file"
                   ref={imageRef}
@@ -269,7 +298,7 @@ const Profile = () => {
             </div>
             <Wrapper>
                <Input
-                  style={{ fontSize: "2.2rem", fontWeight: "600" }}
+                  style={{ fontSize: "2rem", fontWeight: "600" }}
                   onChange={(e) => setFullName(e.target.value)}
                   type="text"
                   value={fullName}

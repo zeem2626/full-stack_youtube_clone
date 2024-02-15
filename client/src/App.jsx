@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 
 function App() {
    const [darkMode, setDarkMode] = useState(1);
-   const [display, setDisplay] = useState(1);
+   const [display, setDisplay] = useState(0);
    const dispatch = useDispatch();
    const refresh = useSelector((state) => state.loading.refresh);
 

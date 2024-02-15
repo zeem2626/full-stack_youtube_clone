@@ -18,6 +18,7 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { fetchSuccess } from "../redux/videosSlice";
 import { refresh } from "../redux/loadingSlice";
+import Image from "./utilities/CircularIconImage";
 
 const Container = styled.div`
    display: flex;
@@ -26,15 +27,23 @@ const Container = styled.div`
    align-items: center;
    position: sticky;
    top: 0rem;
-   padding:  1rem;
+   padding: 1rem;
    z-index: 2;
-`;
+
+   @media only screen and (max-width: 600px) {
+      padding: 1rem 0.1rem;
+      /* flex-direction: column; */
+   }
+   `;
 
 const Img = styled.img`
    height: 3rem;
    /* padding: 1rem; */
-
+   
    margin-left: 1rem;
+   @media only screen and (max-width: 600px) {
+     margin: 0;
+   }
 `;
 
 const HamburgerLogoWrapper = styled.div`
@@ -42,25 +51,53 @@ const HamburgerLogoWrapper = styled.div`
    align-items: center;
    font-size: 1.8rem;
    gap: 0.5rem;
+   /* border:1px solid red; */
+
+   @media only screen and (max-width: 600px) {
+      gap: 0rem;
+   }
 `;
+const YoutubeHeading = styled.div`
+   font-size: 2.2rem;
+   font-weight: 600;
+
+   @media only screen and (max-width: 600px) {
+      display: none;
+   }
+   `;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  @media only screen and (max-width: 600px) {
+    gap: 0.3rem;
+  }
+  `
 const Button = styled.div`
    display: flex;
    font-size: 0.9rem;
    justify-content: center;
    align-items: center;
-   /* border: 1px solid ${({ theme }) => theme.soft}; */
+   /* flex-shrink: 1; */
+   /* border: 1px solid #f77; */
    background-color: ${({ theme }) => theme.soft};
    color: ${({ theme }) => theme.bg};
    cursor: pointer;
    border-radius: 2rem;
    gap: 0.4rem;
-   margin-right: 1rem;
+   /* margin-right: 1rem; */
    padding: 0rem 0.6rem;
-   min-width: 4rem;
-   height: 4rem;
+   /* max-width: 4rem; */
+   width: 4rem;
+   /* height: 4rem; */
 
    &:hover {
       background-color: ${({ theme }) => `${theme.soft}9`};
+   }
+
+   @media only screen and (max-width: 600px) {
+
    }
 `;
 const Input = styled.input`
@@ -70,30 +107,46 @@ const Input = styled.input`
    background-color: transparent;
    color: #ddd;
    outline: none;
-   padding-left: 2rem;
+   padding: 0.5rem 1rem;
 `;
 const Search = styled.form`
    display: flex;
    border: 1.5px solid #393939;
    width: 35%;
    border-radius: 2rem;
+   /* padding: 0.2rem; */
+   
+   @media only screen and (max-width: 600px) {
+     margin: 0 0.3rem;
+     /* padding: 0.2rem 0; */
+     /* padding:0 0rem; */
+     flex-grow: 1;
+     /* width: 100%; */
+      /* min-width: 3rem;
+      height: 3rem; */
+   }
 `;
 const Icon = styled.button`
    background-color: ${({ theme }) => theme.bgLighter};
    color: ${({ theme }) => theme.text};
    border: none;
    border-radius: 0 2rem 2rem 0;
-   width: 12%;
+   width: 13%;
    cursor: pointer;
-   font-size: 2rem;
-
+   /* font-size: 1rem; */
+   
    &:hover {
-      font-size: 2.2rem;
+     font-size: 2.2rem;
+    }
+    
+    @media only screen and (max-width: 600px) {
+     width: 22%;
+
    }
 `;
 
 const Navbar = ({ display, setDisplay }) => {
-  //  const youtubeLogo = "";
+   //  const youtubeLogo = "";
    const [openUploadVideo, setOpenUploadVideo] = useState(false);
    const [q, setQ] = useState("");
    const user = useSelector((state) => state.user.value);
@@ -109,11 +162,13 @@ const Navbar = ({ display, setDisplay }) => {
          .catch((error) => {
             console.log(error);
          });
-      const res = await axios.get(`${conf.api}/user/auth/logout`, { withCredentials: true });
+      const res = await axios.get(`${conf.api}/user/auth/logout`, {
+         withCredentials: true,
+      });
       console.log(res.data.message);
       // await axios.get("/api/user/auth/logout", { withCredentials: true });
       dispatch(loginFailure());
-      dispatch(refresh())
+      dispatch(refresh());
       // navigate(-1);
    };
 
@@ -160,7 +215,7 @@ const Navbar = ({ display, setDisplay }) => {
                   onClick={() => (display == 0 ? setDisplay(1) : setDisplay(0))}
                />
                <Img src={youtubeLogo} />
-               <h3>YouTube</h3>
+               <YoutubeHeading display={display}>YouTube</YoutubeHeading>
             </HamburgerLogoWrapper>
 
             <Search>
@@ -181,18 +236,20 @@ const Navbar = ({ display, setDisplay }) => {
             </Search>
 
             {user ? (
-               <div style={{ display: "flex", gap: "1rem" }}>
+               <ButtonWrapper >
                   <Link to="profile">
                      {user.avatar ? (
-                        <img
-                           style={{
-                              width: "4rem",
-                              height: "4rem",
-                              borderRadius: "50%",
-                           }}
-                           src={user?.avatar}
-                           alt=""
-                        />
+                        // <img
+                        //    style={{
+                        //       width: "4rem",
+                        //       height: "4rem",
+                        //       borderRadius: "50%",
+                        //    }}
+                        //    //  src={user?.avatar}
+                        //    alt=""
+                        //    />
+
+                        <Image src={user?.avatar} size="4" />
                      ) : (
                         <Button>
                            <AccountCircleIcon sx={{ "font-size": "2.2rem" }} />
@@ -205,7 +262,7 @@ const Navbar = ({ display, setDisplay }) => {
                   <Button onClick={signout}>
                      <LogoutIcon />
                   </Button>
-               </div>
+               </ButtonWrapper>
             ) : (
                <Link to="auth" style={{ textDecoration: "none" }}>
                   <Button>

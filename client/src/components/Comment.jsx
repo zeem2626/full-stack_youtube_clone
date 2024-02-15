@@ -41,7 +41,7 @@ const AddComment = styled.form`
 const InputComment = styled.div`
    display: flex;
    flex-direction: column;
-   width: 95%;
+   flex-grow: 1;
 `;
 
 const Container2 = styled.div`

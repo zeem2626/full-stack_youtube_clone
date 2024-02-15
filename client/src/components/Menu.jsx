@@ -47,8 +47,15 @@ const Container = styled.div`
    top: 6rem;
 
    @media only screen and (max-width: 600px) {
+     height: 100vh;
+     max-width: none;
+     width: 100%;
+      display: ${({ display }) => (display ? "inline-block" : "none")};
+      background-color: ${({ theme }) => theme.bg};
+      opacity: 85%;
       position: fixed;
-      top: 55px;
+      z-index: 2;
+      /* top: 55px; */
       /* position: absolute; */
    }
 `;
@@ -68,9 +75,12 @@ const Item = styled.div`
    border-radius: 0.8rem;
    font-size: 1.4rem;
    /* width: 100%; */
-
+   
    &:hover {
       background-color: ${({ theme }) => theme.bgLighter};
+   }
+
+   @media only screen and (max-width: 600px) {
    }
 `;
 
@@ -83,7 +93,7 @@ const Hr = styled.div`
 
 const Button = styled.div`
    display: flex;
-   font-size: 0.9rem;
+   /* font-size: 1.6rem; */
    justify-content: center;
    align-items: center;
    background-color: ${({ theme }) => theme.soft};
@@ -136,7 +146,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    };
 
    const SignMenu = () => (
-      <div style={{ paddingLeft: " 1rem", fontWeight: "500" }}>
+      <div style={{ paddingLeft: " 1rem", fontWeight: "500", maxWidth:"20rem" }}>
          <p>Sign in to like videos, comment and subscribe.</p>
 
          <Link to="auth" style={{ textDecoration: "none" }}>
@@ -153,7 +163,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    const getHomeVideos = async () => {
       try {
          const res = await axios.get(`${conf.api}/video/random`);
-        //  const res = await axios.get("/api/video/random");
+         //  const res = await axios.get("/api/video/random");
          dispatch(fetchSuccess(res.data?.data));
       } catch (error) {
          dispatch(fetchFailure());
@@ -163,7 +173,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    const getTrendingVideos = async () => {
       try {
          const res = await axios.get(`${conf.api}/video/trend`);
-        //  const res = await axios.get("/api/video/trend");
+         //  const res = await axios.get("/api/video/trend");
          dispatch(fetchSuccess(res.data?.data));
       } catch (error) {
          dispatch(fetchFailure());
@@ -173,7 +183,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    const getSubscriptionVideos = async () => {
       try {
          const res = await axios.get(`${conf.api}/video/subscribed`, {
-        //  const res = await axios.get("/api/video/subscribed", {
+            //  const res = await axios.get("/api/video/subscribed", {
             withCredentials: true,
          });
          dispatch(fetchSuccess(res.data?.data));

@@ -12,11 +12,12 @@ const Container = styled.div`
    justify-content: center;
    align-items: center;
    background-color: #3335;
+   background-color: ${({ theme }) => theme.bg}7;
    /* color: ${({ theme }) => theme.text}; */
    `;
 const Wrapper = styled.div`
    background-color: ${({ theme }) => theme.bg};
-   width: 80%;
+   width: 97%;
    max-width: 60rem;
    /* text-align: center; */
    height: 50%;
