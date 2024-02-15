@@ -34,266 +34,262 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 const Container = styled.div`
-   background-color: ${({ theme }) => theme.bg};
-   /* width: 15%; */
-   /* flex-grow: 1; */
-   max-width: 20rem;
-   /* min-width: 15%; */
-   /* z-index: 2; */
+  background-color: ${({ theme }) => theme.bg};
+  /* width: 15%; */
+  /* flex-grow: 1; */
+  max-width: 20rem;
+  /* min-width: 15%; */
+  /* z-index: 2; */
 
-   height: 90vh;
-   /* max-height: 50rem; */
-   position: sticky;
-   top: 6rem;
+  height: 90vh;
+  /* max-height: 50rem; */
+  position: sticky;
+  //   top: 6rem;
 
-   @media only screen and (max-width: 600px) {
-     height: 100vh;
-     max-width: none;
-     width: 100%;
-      display: ${({ display }) => (display ? "inline-block" : "none")};
-      background-color: ${({ theme }) => theme.bg};
-      opacity: 85%;
-      position: fixed;
-      z-index: 2;
-      /* top: 55px; */
-      /* position: absolute; */
-   }
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+    max-width: none;
+    width: 100%;
+    display: ${({ display }) => (display ? "inline-block" : "none")};
+    background-color: ${({ theme }) => theme.bg};
+    opacity: 95%;
+    position: fixed;
+    z-index: 2;
+    /* top: 55px; */
+    /* position: absolute; */
+  }
 `;
 
 const Img = styled.img`
-   height: 5.5rem;
+  height: 5.5rem;
 `;
 
 const Item = styled.div`
-   display: flex;
-   /* display: ${({ display }) => (display ? "flex" : "none")}; */
-   flex-direction: ${({ display }) => (display ? "row" : "column")};
-   color: ${({ theme }) => theme.text};
-   align-items: center;
-   gap: ${({ display }) => (display ? "2.5rem" : "0.5rem")};
-   padding: 1rem 1rem;
-   border-radius: 0.8rem;
-   font-size: 1.4rem;
-   /* width: 100%; */
-   
-   &:hover {
-      background-color: ${({ theme }) => theme.bgLighter};
-   }
+  display: flex;
+  /* display: ${({ display }) => (display ? "flex" : "none")}; */
+  flex-direction: ${({ display }) => (display ? "row" : "column")};
+  color: ${({ theme }) => theme.text};
+  align-items: center;
+  gap: ${({ display }) => (display ? "2.5rem" : "0.5rem")};
+  padding: 1rem 1rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  /* width: 100%; */
 
-   @media only screen and (max-width: 600px) {
-   }
+  &:hover {
+    background-color: ${({ theme }) => theme.bgLighter};
+  }
+
+  @media only screen and (max-width: 600px) {
+  }
 `;
 
 const Hr = styled.div`
-   height: 1px;
-   background-color: ${({ theme }) => theme.bgLighter};
-   /* max-width: 90%; */
-   margin: 1.5rem auto;
+  height: 1px;
+  background-color: ${({ theme }) => theme.bgLighter};
+  /* max-width: 90%; */
+  margin: 1.5rem auto;
 `;
 
 const Button = styled.div`
-   display: flex;
-   /* font-size: 1.6rem; */
-   justify-content: center;
-   align-items: center;
-   background-color: ${({ theme }) => theme.soft};
-   color: ${({ theme }) => theme.bg};
-   cursor: pointer;
-   border-radius: 2rem;
-   padding: 0.2rem 0;
-   gap: 0.4rem;
-   margin: 1rem auto 0 auto;
-   width: 50%;
-   /* padding: 0rem 0.6rem; */
-   /* min-width: 4rem; */
+  display: flex;
+  /* font-size: 1.6rem; */
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.soft};
+  color: ${({ theme }) => theme.bg};
+  cursor: pointer;
+  border-radius: 2rem;
+  padding: 0.2rem 0;
+  gap: 0.4rem;
+  margin: 1rem auto 0 auto;
+  width: 50%;
+  /* padding: 0rem 0.6rem; */
+  /* min-width: 4rem; */
 
-   &:hover {
-      background-color: ${({ theme }) => `${theme.soft}9`};
-   }
+  &:hover {
+    background-color: ${({ theme }) => `${theme.soft}9`};
+  }
 `;
 const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
-   const user = useSelector((state) => state.user.value);
-   const dispatch = useDispatch();
-   const location = useLocation();
-   const pathVideo = location.pathname.split("/")[1];
-   // const user = true;
-   // console.log(user);
+  const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const pathVideo = location.pathname.split("/")[1];
+  // const user = true;
+  // console.log(user);
 
-   const RenderItems = (items) => {
-      return items?.map((Icon, index) => {
-         if (Icon.icon == "h") {
-            return (
-               <Item display={display} key={index}>
-                  <h5>{Icon.name}</h5>
-               </Item>
-            );
-         } else if (Icon.icon == Hr) return <Hr key={index} />;
-         else if (Icon.icon == SignMenu) return <SignMenu key={index} />;
-         else
-            return (
-               <Link
-                  to={Icon.path}
-                  style={{ textDecoration: "none" }}
-                  key={index}
-               >
-                  <Item display={display} key={index} onClick={Icon.onClick}>
-                     <Icon.icon sx={{ "font-size": "2.7rem" }} />
-                     <p style={{ whiteSpace: "nowrap" }}>{Icon.name}</p>
-                  </Item>
-               </Link>
-            );
-      });
-   };
-
-   const SignMenu = () => (
-      <div style={{ paddingLeft: " 1rem", fontWeight: "500", maxWidth:"20rem" }}>
-         <p>Sign in to like videos, comment and subscribe.</p>
-
-         <Link to="auth" style={{ textDecoration: "none" }}>
-            <Button>
-               {" "}
-               <PermIdentityIcon sx={{ "font-size": "2.2rem" }} /> Sign in
-            </Button>
-         </Link>
-
-         <Hr />
-      </div>
-   );
-
-   const getHomeVideos = async () => {
-      try {
-         const res = await axios.get(`${conf.api}/video/random`);
-         //  const res = await axios.get("/api/video/random");
-         dispatch(fetchSuccess(res.data?.data));
-      } catch (error) {
-         dispatch(fetchFailure());
-         console.log(error);
-      }
-   };
-   const getTrendingVideos = async () => {
-      try {
-         const res = await axios.get(`${conf.api}/video/trend`);
-         //  const res = await axios.get("/api/video/trend");
-         dispatch(fetchSuccess(res.data?.data));
-      } catch (error) {
-         dispatch(fetchFailure());
-         console.log(error);
-      }
-   };
-   const getSubscriptionVideos = async () => {
-      try {
-         const res = await axios.get(`${conf.api}/video/subscribed`, {
-            //  const res = await axios.get("/api/video/subscribed", {
-            withCredentials: true,
-         });
-         dispatch(fetchSuccess(res.data?.data));
-      } catch (error) {
-         dispatch(fetchFailure());
-         console.log(error);
-      }
-   };
-
-   const closedHomeItems = [
-      { icon: HomeIcon, name: "Home", path: "/" },
-      { icon: LocalFireDepartmentIcon, name: "Tren..", path: "/trending" },
-      // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
-      { icon: VideoLibraryIcon, name: "Subs..", path: "/subscribed" },
-      { icon: Hr, name: "" },
-      { icon: SlideshowIcon, name: "You", path: "/profile" },
-   ];
-
-   const homeItems = [
-      { icon: HomeIcon, name: "Home", path: "/" },
-      // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
-      {
-         icon: LocalFireDepartmentIcon,
-         name: "Trending",
-         path: "/trending",
-      },
-      {
-         icon: VideoLibraryIcon,
-         name: "Subscription",
-         path: "/subscribed",
-      },
-      // { icon: SettingsIcon, name: "Test", path: "/test" },
-      { icon: Hr, name: "" },
-   ];
-
-   const loginItems = [
-      { icon: "h", name: "You" },
-      { icon: PermIdentityIcon, name: "Your channel", path: "/profile" },
-      // { icon: HistoryIcon, name: "History" },
-      { icon: SlideshowIcon, name: "Your Videos", path: "/profile" },
-      // { icon: LightbulbCircleIcon, name: "Your Courses" },
-      // { icon: ScheduleIcon, name: "Watch later" },
-      // { icon: ContentCutIcon, name: "Your clips" },
-      { icon: ThumbUpOffAltIcon, name: "Liked videos" },
-      // { icon: PlaylistPlayIcon, name: "Playlist" },
-      // { icon: Hr, name: "" },
-
-      // { icon: "h", name: "Subscription" },
-      // { icon: PermIdentityIcon, name: "Code With Harry" },
-      // { icon: PermIdentityIcon, name: "Harshit Vashisht" },
-      // { icon: PermIdentityIcon, name: "free code camp" },
-      // { icon: PermIdentityIcon, name: "chai aur code" },
-      // { icon: PermIdentityIcon, name: "youtube" },
-      // { icon: PermIdentityIcon, name: "striver" },
-      // { icon: PermIdentityIcon, name: "pep coding" },
-      { icon: Hr, name: "" },
-   ];
-
-   const logoutItems = [
-      { icon: SlideshowIcon, name: "You" },
-      { icon: HistoryIcon, name: "History" },
-      { icon: Hr, name: "" },
-      { icon: SignMenu, name: "" },
-   ];
-
-   const exploreItems = [
-      { icon: "h", name: "Settings" },
-      // { icon: "h", name: "Explore" },
-
-      // { icon: LocalFireDepartmentIcon, name: "Trending", path: "/trending" },
-      // {icon: LocalMallIcon, name: "Shopping" },
-      // {icon: MusicNoteIcon, name: "Music" },
-      // {icon: MovieIcon, name: "Movies" },
-      // {icon: OnlinePredictionIcon, name: "Live" },
-      // {icon: SportsEsportsIcon, name: "Gaming" },
-      // {icon: NewspaperIcon, name: "News" },
-      // {icon: EmojiEventsIcon, name: "Sports" },
-      // {icon: LightbulbIcon, name: "Learning" },
-      // {icon: DryCleaningIcon, name: "Fashion & Beauty" },
-      // {icon: PodcastsIcon, name: "Podcasts" },
-      // { icon: SettingsIcon, name: "Settings" }
-   ];
-
-   // const darkModeItem = [{
-   //   icon: LightModeIcon, name: (darkMode) ? "Dark Mode" : "Light Mode",
-   //   onClick: () => (darkMode == 1) ? setDarkMode(0) : setDarkMode(1),
-   //   path: null
-   // }]
-
-   return (
-      <Container display={display}>
-         {!display && pathVideo != "video" ? RenderItems(closedHomeItems) : ""}
-         {display ? RenderItems(homeItems) : ""}
-         {display && user ? RenderItems(loginItems) : ""}
-         {display && !user ? RenderItems(logoutItems) : ""}
-         {display ? RenderItems(exploreItems) : ""}
-         {/* {(display) ? RenderItems(darkModeItem) : ""} */}
-         {display ? (
-            <Item
-               display={display}
-               onClick={() => (darkMode == 1 ? setDarkMode(0) : setDarkMode(1))}
-            >
-               <LightModeIcon sx={{ "font-size": "2.7rem" }} />
-               <p>{darkMode ? "Dark Mode" : "Light Mode"}</p>
+  const RenderItems = (items) => {
+    return items?.map((Icon, index) => {
+      if (Icon.icon == "h") {
+        return (
+          <Item display={display} key={index}>
+            <h5>{Icon.name}</h5>
+          </Item>
+        );
+      } else if (Icon.icon == Hr) return <Hr key={index} />;
+      else if (Icon.icon == SignMenu) return <SignMenu key={index} />;
+      else
+        return (
+          <Link to={Icon.path} style={{ textDecoration: "none" }} key={index}>
+            <Item display={display} key={index} onClick={Icon.onClick}>
+              <Icon.icon sx={{ "font-size": "2.7rem" }} />
+              <p style={{ whiteSpace: "nowrap" }}>{Icon.name}</p>
             </Item>
-         ) : (
-            ""
-         )}
-      </Container>
-   );
+          </Link>
+        );
+    });
+  };
+
+  const SignMenu = () => (
+    <div style={{ paddingLeft: " 1rem", fontWeight: "500", maxWidth: "20rem" }}>
+      <p>Sign in to like videos, comment and subscribe.</p>
+
+      <Link to="auth" style={{ textDecoration: "none" }}>
+        <Button>
+          {" "}
+          <PermIdentityIcon sx={{ "font-size": "2.2rem" }} /> Sign in
+        </Button>
+      </Link>
+
+      <Hr />
+    </div>
+  );
+
+  const getHomeVideos = async () => {
+    try {
+      const res = await axios.get(`${conf.api}/video/random`);
+      //  const res = await axios.get("/api/video/random");
+      dispatch(fetchSuccess(res.data?.data));
+    } catch (error) {
+      dispatch(fetchFailure());
+      console.log(error);
+    }
+  };
+  const getTrendingVideos = async () => {
+    try {
+      const res = await axios.get(`${conf.api}/video/trend`);
+      //  const res = await axios.get("/api/video/trend");
+      dispatch(fetchSuccess(res.data?.data));
+    } catch (error) {
+      dispatch(fetchFailure());
+      console.log(error);
+    }
+  };
+  const getSubscriptionVideos = async () => {
+    try {
+      const res = await axios.get(`${conf.api}/video/subscribed`, {
+        //  const res = await axios.get("/api/video/subscribed", {
+        withCredentials: true,
+      });
+      dispatch(fetchSuccess(res.data?.data));
+    } catch (error) {
+      dispatch(fetchFailure());
+      console.log(error);
+    }
+  };
+
+  const closedHomeItems = [
+    { icon: HomeIcon, name: "Home", path: "/" },
+    { icon: LocalFireDepartmentIcon, name: "Tren..", path: "/trending" },
+    // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
+    { icon: VideoLibraryIcon, name: "Subs..", path: "/subscribed" },
+    { icon: Hr, name: "" },
+    { icon: SlideshowIcon, name: "You", path: "/profile" },
+  ];
+
+  const homeItems = [
+    { icon: HomeIcon, name: "Home", path: "/" },
+    // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
+    {
+      icon: LocalFireDepartmentIcon,
+      name: "Trending",
+      path: "/trending",
+    },
+    {
+      icon: VideoLibraryIcon,
+      name: "Subscription",
+      path: "/subscribed",
+    },
+    // { icon: SettingsIcon, name: "Test", path: "/test" },
+    { icon: Hr, name: "" },
+  ];
+
+  const loginItems = [
+    { icon: "h", name: "You" },
+    { icon: PermIdentityIcon, name: "Your channel", path: "/profile" },
+    // { icon: HistoryIcon, name: "History" },
+    { icon: SlideshowIcon, name: "Your Videos", path: "/profile" },
+    // { icon: LightbulbCircleIcon, name: "Your Courses" },
+    // { icon: ScheduleIcon, name: "Watch later" },
+    // { icon: ContentCutIcon, name: "Your clips" },
+    { icon: ThumbUpOffAltIcon, name: "Liked videos" },
+    // { icon: PlaylistPlayIcon, name: "Playlist" },
+    // { icon: Hr, name: "" },
+
+    // { icon: "h", name: "Subscription" },
+    // { icon: PermIdentityIcon, name: "Code With Harry" },
+    // { icon: PermIdentityIcon, name: "Harshit Vashisht" },
+    // { icon: PermIdentityIcon, name: "free code camp" },
+    // { icon: PermIdentityIcon, name: "chai aur code" },
+    // { icon: PermIdentityIcon, name: "youtube" },
+    // { icon: PermIdentityIcon, name: "striver" },
+    // { icon: PermIdentityIcon, name: "pep coding" },
+    { icon: Hr, name: "" },
+  ];
+
+  const logoutItems = [
+    { icon: SlideshowIcon, name: "You" },
+    { icon: HistoryIcon, name: "History" },
+    { icon: Hr, name: "" },
+    { icon: SignMenu, name: "" },
+  ];
+
+  const exploreItems = [
+    { icon: "h", name: "Settings" },
+    // { icon: "h", name: "Explore" },
+
+    // { icon: LocalFireDepartmentIcon, name: "Trending", path: "/trending" },
+    // {icon: LocalMallIcon, name: "Shopping" },
+    // {icon: MusicNoteIcon, name: "Music" },
+    // {icon: MovieIcon, name: "Movies" },
+    // {icon: OnlinePredictionIcon, name: "Live" },
+    // {icon: SportsEsportsIcon, name: "Gaming" },
+    // {icon: NewspaperIcon, name: "News" },
+    // {icon: EmojiEventsIcon, name: "Sports" },
+    // {icon: LightbulbIcon, name: "Learning" },
+    // {icon: DryCleaningIcon, name: "Fashion & Beauty" },
+    // {icon: PodcastsIcon, name: "Podcasts" },
+    // { icon: SettingsIcon, name: "Settings" }
+  ];
+
+  // const darkModeItem = [{
+  //   icon: LightModeIcon, name: (darkMode) ? "Dark Mode" : "Light Mode",
+  //   onClick: () => (darkMode == 1) ? setDarkMode(0) : setDarkMode(1),
+  //   path: null
+  // }]
+
+  return (
+    <Container display={display}>
+      {!display && pathVideo != "video" ? RenderItems(closedHomeItems) : ""}
+      {display ? RenderItems(homeItems) : ""}
+      {display && user ? RenderItems(loginItems) : ""}
+      {display && !user ? RenderItems(logoutItems) : ""}
+      {display ? RenderItems(exploreItems) : ""}
+      {/* {(display) ? RenderItems(darkModeItem) : ""} */}
+      {display ? (
+        <Item
+          display={display}
+          onClick={() => (darkMode == 1 ? setDarkMode(0) : setDarkMode(1))}
+        >
+          <LightModeIcon sx={{ "font-size": "2.7rem" }} />
+          <p>{darkMode ? "Dark Mode" : "Light Mode"}</p>
+        </Item>
+      ) : (
+        ""
+      )}
+    </Container>
+  );
 };
 
 export default Menu;
