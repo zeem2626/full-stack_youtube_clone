@@ -310,7 +310,7 @@ const Videos = () => {
           </VideoWrapper>
 
           <VideoDetailsWrapper>
-            <h2 style={{ padding: "1rem 0rem" }}>{video.title || "Title"}</h2>
+            <h2 style={{ padding: "1rem 0rem",fontSize: "1.8rem" }}>{video.title || "Title"}</h2>
 
             <Wrapper1>
               <ChannelInfoWrapper>
