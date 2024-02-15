@@ -361,9 +361,9 @@ const Videos = () => {
             </Wrapper1>
 
             <Description>
-              <h6>
+              <h3>
                 {video.views} views {format(video.createdAt)}
-              </h6>
+              </h3>
               <DescriptionContent maxheight={maxheight}>
                 {video.description}
               </DescriptionContent>
