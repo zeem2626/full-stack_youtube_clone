@@ -186,10 +186,12 @@ const Navbar = ({ display, setDisplay }) => {
       return;
     }
 
+    const keyWord = q.toLowerCase()
+
     let searchedVideos = [];
     let uniqueVideoId = [];
 
-    let res = await axios.get(`${conf.api}/video/search?q=${q}`);
+    let res = await axios.get(`${conf.api}/video/search?q=${keyWord}`);
     // let res = await axios.get(`/api/video/search?q=${q}`);
     res.data?.data?.forEach((elem) => {
       searchedVideos.push(elem);
@@ -198,7 +200,7 @@ const Navbar = ({ display, setDisplay }) => {
     });
     // let searchedVideos = new Set(res);
 
-    const qTags = q.replaceAll(" ", ",");
+    const qTags = keyWord.replaceAll(" ", ",");
     res = await axios.get(`${conf.api}/video/tags?tags=${qTags}`);
     // res = await axios.get(`/api/video/tags?tags=${qTags}`);
     res.data?.data?.forEach((elem) => {

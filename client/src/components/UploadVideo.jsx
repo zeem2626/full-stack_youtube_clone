@@ -153,7 +153,7 @@ const UploadVideo = ({ setOpenUploadVideo }) => {
       const video = videoRef.current.files[0];
       const thumbnail = thumbnailRef.current.files[0];
       const title = titleRef.current.value;
-      const tags = tagsRef.current.value;
+      const tags = tagsRef.current.value?.toLowerCase();
       const description = descriptionRef.current.value;
 
       if (
