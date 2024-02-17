@@ -63,22 +63,22 @@ const Title = styled.div`
   font-weight: 500;
   text-decoration: none;
   font-size: 1.6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 2.2rem;
   max-height: 4.4rem;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
 const VideoInfo = styled.div`
-  //   display: flex;
+  display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.textSoft};
   font-size: 1.4rem;
-  gap: 0.5rem;
+  gap: 0.3rem;
 
   @media only screen and (max-width: 600px) {
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.7rem;
   }
 `;
 
@@ -117,6 +117,7 @@ const Card = ({
           textDecoration: "none",
           height: "100%",
           width: "100%",
+          // fontSize: "1.8rem"
         }}
       >
         <Img src={thumbnail} />
@@ -124,7 +125,7 @@ const Card = ({
         <Wrapper>
           <ChannelImgWrapper>
             {/* <ChannelImg src={channelInfo.avatar} /> */}
-            <Image src={channelInfo.avatar} size="4" />
+            <Image src={channelInfo.avatar} size="3.5" />
           </ChannelImgWrapper>
 
           <Details>

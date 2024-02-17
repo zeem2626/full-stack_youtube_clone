@@ -121,7 +121,7 @@ const UserComment = ({
 
    return (
       <Container2>
-         <Image src={channel?.avatar} size="4" />
+         <Image src={channel?.avatar} size="3.5" />
 
          <UserCommentDetail>
             <h4>
@@ -202,7 +202,7 @@ const Comment = ({ videoId }) => {
          <h1>{comments.length} Comments </h1>
 
          <AddComment>
-            <Image src={user?.avatar} size="4" />
+            <Image src={user?.avatar} size="3.5" />
             <InputComment>
                <Input
                   ref={inputComment}

@@ -98,7 +98,7 @@ const ButtonCircle = styled.div`
   /* margin-right: 1rem; */
   padding: 0rem 0.6rem;
   /* max-width: 4rem; */
-  width: 4rem;
+  width: 3rem;
   /* height: 4rem; */
 
   &:hover {
@@ -258,7 +258,7 @@ const Navbar = ({ display, setDisplay }) => {
                 //    alt=""
                 //    />
 
-                <Image src={user?.avatar} size="4" />
+                <Image src={user?.avatar} size="3" />
               ) : (
                 <ButtonCircle>
                   <AccountCircleIcon sx={{ "font-size": "2.2rem" }} />

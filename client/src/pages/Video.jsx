@@ -325,7 +325,7 @@ const Videos = () => {
 
             <Wrapper1>
               <ChannelInfoWrapper>
-                <Image src={channel.avatar} size="4.5" />
+                <Image src={channel.avatar} size="3.5" />
                 <ChannelInfo>
                   <h3>{channel.fullName || "Channel name"}</h3>
                   <P>{channel.subscribers?.length} Subscribers</P>
