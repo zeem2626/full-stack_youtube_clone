@@ -187,7 +187,7 @@ const Navbar = ({ display, setDisplay }) => {
          return;
       }
 
-      keyWord = q.toLowerCase();
+      keyWord = keyWord.toLowerCase();
 
       let searchedVideos = [];
       let uniqueVideoId = [];
