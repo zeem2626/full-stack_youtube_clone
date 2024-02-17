@@ -54,7 +54,7 @@ const HamburgerLogoWrapper = styled.div`
   /* border:1px solid red; */
 
   @media only screen and (max-width: 600px) {
-    gap: 0rem;
+    gap: 0.1rem;
   }
 `;
 const YoutubeHeading = styled.div`
@@ -220,7 +220,7 @@ const Navbar = ({ display, setDisplay }) => {
       <Container>
         <HamburgerLogoWrapper display={display}>
           <MenuIcon
-            sx={{ "font-size": "2.6rem", cursor: "pointer" }}
+            sx={{ "font-size": "3rem", cursor: "pointer" }}
             onClick={() => (display == 0 ? setDisplay(1) : setDisplay(0))}
           />
           <Img src={youtubeLogo} />

@@ -12,8 +12,8 @@ import { loadingEnd, refresh } from "../redux/loadingSlice.js";
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  //   height: 95vh;
+  /* align-items: self-start; */
+  /* min-height: 100vh; */
   //  /* max-width: 100%; */
 `;
 const Wrapper = styled.div`
@@ -23,11 +23,10 @@ const Wrapper = styled.div`
   padding: 2rem 1rem 3rem 1rem;
   text-align: center;
   gap: 1rem;
-  //   margin-top: 5rem;
   width: 90%;
   margin-top: 2rem;
   max-width: 50rem;
-  //   height: 20rem;
+  /* height: 100%; */
   border-radius: 1rem;
 `;
 const Form = styled.form`

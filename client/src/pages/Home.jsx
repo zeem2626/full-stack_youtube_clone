@@ -13,6 +13,7 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   /* padding: 3rem 0rem 5rem 2rem; */
+  padding-bottom: 2rem;
   gap: 4rem 1.5rem;
   z-index: -1;
   
