@@ -67,7 +67,7 @@ const Button = styled.button`
    color: ${({ theme }) => theme.bgLighter};
    border: none;
    border-radius: 2rem;
-   padding: 0.2rem 1rem;
+   padding: 0.6rem 1rem;
    font-weight: 600;
    cursor: pointer;
 `;
