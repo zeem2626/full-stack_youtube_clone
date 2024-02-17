@@ -34,8 +34,10 @@ const Hr = styled.div`
 `;
 const AddComment = styled.form`
    display: flex;
+   justify-content: space-between;
+   align-items: center;
    gap: 1rem;
-   padding: 3rem 0;
+   margin: 3rem 0;
 `;
 
 const InputComment = styled.div`
@@ -65,7 +67,7 @@ const Button = styled.button`
    color: ${({ theme }) => theme.bgLighter};
    border: none;
    border-radius: 2rem;
-   padding: 0 1rem;
+   padding: 0.2rem 1rem;
    font-weight: 600;
    cursor: pointer;
 `;
