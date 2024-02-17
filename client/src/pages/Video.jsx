@@ -69,14 +69,9 @@ const Button = styled.button`
   /* color: ${({ theme }) => theme.text}; */
   border: none;
   gap: 0.4rem;
-  /* font-size: 1.4rem; */
-  /* font-weight: 600; */
-  padding: 0.7rem 1rem;
-  /* margin: 0.2rem 1rem; */
-  /* border: 1px solid red; */
+  font-size: 1.4rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 2rem;
-  //   overflow: hidden;
-  //   text-overflow: ellipsis;
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
@@ -84,7 +79,8 @@ const Button = styled.button`
   }
 `;
 
-const P = styled.div`
+const PTextSoft = styled.div`
+/* font-size: 1.4rem; */
   color: ${({ theme }) => theme.textSoft};
 `;
 
@@ -124,7 +120,7 @@ const ButtonsContainer = styled.div`
     justify-content: flex-start;
     overflow: scroll;
     /* flex-wrap: wrap; */
-    gap: 1.5rem;
+    gap: 1rem;
     /* width: 90%; */
     /* border: 1px solid red; */
   }
@@ -327,8 +323,8 @@ const Videos = () => {
               <ChannelInfoWrapper>
                 <Image src={channel.avatar} size="3.5" />
                 <ChannelInfo>
-                  <h3>{channel.fullName || "Channel name"}</h3>
-                  <P>{channel.subscribers?.length} Subscribers</P>
+                  <h4>{channel.fullName || "Channel name"}</h4>
+                  <PTextSoft>{channel.subscribers?.length} Subscribers</PTextSoft>
                 </ChannelInfo>
                 <Button subscribe={1} onClick={subscribeChannel}>
                   {channel.subscribers?.includes(user?._id)
@@ -372,9 +368,9 @@ const Videos = () => {
             </Wrapper1>
 
             <Description>
-              <h4>
+              <PTextSoft style={{fontWeight: "500"}}>
                 {video.views} views . {format(video.createdAt)}
-              </h4>
+              </PTextSoft>
               <DescriptionContent maxheight={maxheight}>
                 {video.description}
               </DescriptionContent>

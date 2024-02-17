@@ -131,7 +131,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
       else if (Icon.icon == SignMenu) return <SignMenu key={index} />;
       else
         return (
-          <Link to={Icon.path} style={{ textDecoration: "none" }} key={index}>
+          <Link to={Icon.path} style={{ textDecoration: "none", fontSize: "1.4rem"}} key={index}>
             <Item display={display} key={index} onClick={Icon.onClick}>
               <Icon.icon sx={{ "font-size": "2.7rem" }} />
               <p style={{ whiteSpace: "nowrap" }}>{Icon.name}</p>

@@ -78,7 +78,7 @@ const Button = styled.button`
   font-size: 1.4rem;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.5rem;
   border: none;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.soft};

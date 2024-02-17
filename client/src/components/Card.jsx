@@ -44,11 +44,7 @@ const Img = styled.img`
 const ChannelImgWrapper = styled.div`
   width: 10%;
 `;
-const ChannelImg = styled.img`
-  width: 100%;
-  border-radius: 50%;
-  height: 3.5rem;
-`;
+
 const Details = styled.div`
   margin-left: 0.7rem;
   max-width: 85%;
@@ -56,16 +52,16 @@ const Details = styled.div`
 const Wrapper = styled.div`
   display: flex;
   /* border: 2px solid yellow; */
-  padding: 0.2rem;
+  padding: 0.4rem 0.2rem 0 0.4rem ;
 `;
 const Title = styled.div`
   color: ${({ theme }) => theme.text};
   font-weight: 500;
   text-decoration: none;
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  line-height: 2.2rem;
-  max-height: 4.4rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+  line-height: 1.8rem;
+  max-height: 3.6rem;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
@@ -74,11 +70,11 @@ const VideoInfo = styled.div`
   flex-direction: column;
   color: ${({ theme }) => theme.textSoft};
   font-size: 1.4rem;
-  gap: 0.3rem;
+  gap: 0.1rem;
 
   @media only screen and (max-width: 600px) {
     flex-direction: row;
-    gap: 0.7rem;
+    gap: 0.6rem;
   }
 `;
 
@@ -125,7 +121,7 @@ const Card = ({
         <Wrapper>
           <ChannelImgWrapper>
             {/* <ChannelImg src={channelInfo.avatar} /> */}
-            <Image src={channelInfo.avatar} size="3.5" />
+            <Image src={channelInfo.avatar} size="3.2" />
           </ChannelImgWrapper>
 
           <Details>

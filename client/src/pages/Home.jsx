@@ -15,6 +15,11 @@ const Container = styled.div`
   /* padding: 3rem 0rem 5rem 2rem; */
   gap: 4rem 1.5rem;
   z-index: -1;
+  
+  @media only screen and (max-width: 600px) {
+    gap: 2rem ;
+    
+  }
 `;
 
 const Home = ({ type }) => {
