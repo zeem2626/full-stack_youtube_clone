@@ -66,6 +66,8 @@ const Home = ({ type }) => {
   return (
     <Container>
       {videos?.length <= 0 ? (
+      (type == "profile") ? 
+      <h1>No videos available</h1> :
         <h1>Server is initialising...</h1>
       ) : (
         videos?.map((elem, i) => (
