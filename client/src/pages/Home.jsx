@@ -69,7 +69,7 @@ const Home = ({ type }) => {
       (type == "profile") ? 
       <h1>No videos available</h1> :
         <div>
-          <h2>Plz wait </h2>
+          <h1>Loading...</h1>
           <h2>Server is free, takes time</h2>
         </div>
       ) : (
