@@ -68,7 +68,10 @@ const Home = ({ type }) => {
       {videos?.length <= 0 ? (
       (type == "profile") ? 
       <h1>No videos available</h1> :
-        <h1>Server is initialising...</h1>
+        <div>
+          <h2>Plz wait </h2>
+          <h2>Server is free, takes time</h2>
+        </div>
       ) : (
         videos?.map((elem, i) => (
           <Card
