@@ -70,7 +70,7 @@ const Home = ({ type }) => {
       <h1>No videos available</h1> :
         <div>
           <h1>Loading...</h1>
-          <h2>Server is free, takes time</h2>
+          <h2>Server hosted for free, takes time</h2>
         </div>
       ) : (
         videos?.map((elem, i) => (
