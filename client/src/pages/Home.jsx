@@ -56,7 +56,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     // if (videos.length <= 0) getVideos();
     if (type == "subscribed" && !user) {
-        navigate("auth");
+        navigate("/auth");
     }
     getVideos();
 
