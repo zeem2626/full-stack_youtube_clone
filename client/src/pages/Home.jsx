@@ -61,7 +61,7 @@ const Home = ({ type }) => {
   return (
     <Container>
       {videos?.length <= 0 ? (
-        <h1>No videos available </h1>
+        <h1>Loading...</h1>
       ) : (
         videos?.map((elem, i) => (
           <Card
