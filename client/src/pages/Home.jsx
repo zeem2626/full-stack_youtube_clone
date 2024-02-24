@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFailure, fetchSuccess } from "../redux/videosSlice";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -28,6 +29,7 @@ const Home = ({ type }) => {
   let loading = useSelector((state) => state.loading.status);
   const videos = useSelector((state) => state.videos.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getVideos = async () => {
     try {
