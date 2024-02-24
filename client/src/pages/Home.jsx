@@ -55,6 +55,9 @@ const Home = ({ type }) => {
 
   useEffect(() => {
     // if (videos.length <= 0) getVideos();
+    if (type == "subscribed" && !user) {
+        navigate("/auth");
+    }
     getVideos();
 
     console.log("Home");
@@ -63,7 +66,12 @@ const Home = ({ type }) => {
   return (
     <Container>
       {videos?.length <= 0 ? (
-        <h1>No videos available </h1>
+      (type == "profile") ? 
+      <h1>No videos available</h1> :
+        <div>
+          <h1>Loading...</h1>
+          <h2>Server hosted for free, takes time</h2>
+        </div>
       ) : (
         videos?.map((elem, i) => (
           <Card
