@@ -69,7 +69,7 @@ const Item = styled.div`
    /* display: ${({ display }) => (display ? "flex" : "none")}; */
    flex-direction: ${({ display }) => (display ? "row" : "column")};
    color: ${({ theme }) => theme.text};
-   align-itemsArray: center;
+   align-items: center;
    gap: ${({ display }) => (display ? "2.5rem" : "0.5rem")};
    padding: 1rem 1rem;
    border-radius: 0.8rem;
@@ -95,7 +95,7 @@ const Button = styled.div`
    display: flex;
    font-size: 1.4rem;
    justify-content: center;
-   align-itemsArray: center;
+   align-items: center;
    background-color: ${({ theme }) => theme.soft};
    color: ${({ theme }) => theme.bg};
    cursor: pointer;
@@ -161,7 +161,7 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
             to="auth"
             style={{ textDecoration: "none", width: "100%", height: "100%" }}
          >
-            <Button>
+            <Button onClick={closeMenu}>
                {" "}
                <PermIdentityIcon sx={{ "font-size": "2.2rem" }} /> Sign in
             </Button>
@@ -258,9 +258,9 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    ];
 
    const logoutItems = [
-      { icon: SlideshowIcon, name: "You" },
-      { icon: HistoryIcon, name: "History" },
-      { icon: Hr, name: "" },
+      // { icon: SlideshowIcon, name: "You" ,path: "/profile",onClick: closeMenu},
+      // { icon: HistoryIcon, name: "History" },
+      // { icon: Hr, name: "" },
       { icon: SignMenu, name: "" },
    ];
 
