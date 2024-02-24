@@ -69,7 +69,7 @@ const Item = styled.div`
    /* display: ${({ display }) => (display ? "flex" : "none")}; */
    flex-direction: ${({ display }) => (display ? "row" : "column")};
    color: ${({ theme }) => theme.text};
-   align-items: center;
+   align-itemsArray: center;
    gap: ${({ display }) => (display ? "2.5rem" : "0.5rem")};
    padding: 1rem 1rem;
    border-radius: 0.8rem;
@@ -95,7 +95,7 @@ const Button = styled.div`
    display: flex;
    font-size: 1.4rem;
    justify-content: center;
-   align-items: center;
+   align-itemsArray: center;
    background-color: ${({ theme }) => theme.soft};
    color: ${({ theme }) => theme.bg};
    cursor: pointer;
@@ -127,8 +127,8 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    // const user = true;
    // console.log(user);
 
-   const RenderItems = (items) => {
-      return items?.map((Icon, index) => {
+   const RenderItems = (itemsArray) => {
+      return itemsArray?.map((Icon, index) => {
          if (Icon.icon == "h") {
             return (
                <Item display={display} key={index}>
@@ -204,6 +204,8 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
       }
    };
 
+   const closeMenu = ()=>{setDisplay(!display)}
+
    const closedHomeItems = [
       { icon: HomeIcon, name: "Home", path: "/" },
       { icon: LocalFireDepartmentIcon, name: "Tren..", path: "/trending" },
@@ -214,17 +216,19 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    ];
 
    const homeItems = [
-      { icon: HomeIcon, name: "Home", path: "/" },
+      { icon: HomeIcon, name: "Home", path: "/", onClick: closeMenu},
       // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
       {
          icon: LocalFireDepartmentIcon,
          name: "Trending",
          path: "/trending",
+         onClick: closeMenu
       },
       {
          icon: VideoLibraryIcon,
          name: "Subscription",
          path: "/subscribed",
+         onClick: closeMenu
       },
       // { icon: SettingsIcon, name: "Test", path: "/test" },
       { icon: Hr, name: "" },
@@ -232,13 +236,13 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
 
    const loginItems = [
       { icon: "h", name: "You" },
-      { icon: PermIdentityIcon, name: "Your channel", path: "/profile" },
+      { icon: PermIdentityIcon, name: "Your channel", path: "/profile", onClick: closeMenu },
       // { icon: HistoryIcon, name: "History" },
-      { icon: SlideshowIcon, name: "Your Videos", path: "/profile" },
+      { icon: SlideshowIcon, name: "Your Videos", path: "/profile" , onClick: closeMenu},
       // { icon: LightbulbCircleIcon, name: "Your Courses" },
       // { icon: ScheduleIcon, name: "Watch later" },
       // { icon: ContentCutIcon, name: "Your clips" },
-      { icon: ThumbUpOffAltIcon, name: "Liked videos" },
+      // { icon: ThumbUpOffAltIcon, name: "Liked videos" },
       // { icon: PlaylistPlayIcon, name: "Playlist" },
       // { icon: Hr, name: "" },
 

@@ -74,6 +74,7 @@ function App() {
                   darkMode={darkMode}
                   setDarkMode={setDarkMode}
                   display={display}
+                  setDisplay={setDisplay}
                />
 
                <Wrapper>
