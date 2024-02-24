@@ -180,6 +180,7 @@ const Navbar = ({ display, setDisplay }) => {
    };
 
    const searchVideos = async (e) => {
+      navigate("/");
       e.preventDefault();
       let keyWord = q.trim();
       if (keyWord == "") {
