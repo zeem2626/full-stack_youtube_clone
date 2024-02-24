@@ -66,7 +66,7 @@ const Home = ({ type }) => {
   return (
     <Container>
       {videos?.length <= 0 ? (
-      (type == "profile") ? 
+      (type == "profile" || type == "subscribed") ? 
       <h1>No videos available</h1> :
         <div>
           <h1>Loading...</h1>
