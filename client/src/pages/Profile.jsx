@@ -322,7 +322,7 @@ const Profile = () => {
                </Button>
             </Wrapper>
          </Container>
-         <h1 style={{ margin: "1rem 0 0 2rem" }}>Your Videos </h1>
+         <h1 style={{ margin: "2rem 1rem" }}>Your Videos </h1>
       </>
    );
 };

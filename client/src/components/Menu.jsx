@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSuccess, fetchFailure } from "../redux/videosSlice";
+import UploadVideo from "./UploadVideo";
 import axios from "axios";
 import conf from "../../conf/conf";
 
 // Icons
 // import MenuIcon from "@mui/icons-material/Menu";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 import HomeIcon from "@mui/icons-material/Home";
 // import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
@@ -102,7 +104,7 @@ const Button = styled.div`
    border-radius: 2rem;
    padding: 0.2rem 0;
    gap: 0.4rem;
-   margin: 1rem ;
+   margin: 1rem;
    width: 50%;
    /* padding: 0rem 0.6rem; */
    /* min-width: 4rem; */
@@ -124,6 +126,8 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    const dispatch = useDispatch();
    const location = useLocation();
    const pathVideo = location.pathname.split("/")[1];
+   const [openUploadVideo, setOpenUploadVideo] = useState(false);
+
    // const user = true;
    // console.log(user);
 
@@ -204,7 +208,9 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
       }
    };
 
-   const closeMenu = ()=>{setDisplay(!display)}
+   const closeMenu = () => {
+      setDisplay(!display);
+   };
 
    const closedHomeItems = [
       { icon: HomeIcon, name: "Home", path: "/" },
@@ -216,19 +222,19 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    ];
 
    const homeItems = [
-      { icon: HomeIcon, name: "Home", path: "/", onClick: closeMenu},
+      { icon: HomeIcon, name: "Home", path: "/", onClick: closeMenu },
       // { icon: PlayCircleOutlineIcon, name: "Shorts", path: "/shorts" },
       {
          icon: LocalFireDepartmentIcon,
          name: "Trending",
          path: "/trending",
-         onClick: closeMenu
+         onClick: closeMenu,
       },
       {
          icon: VideoLibraryIcon,
          name: "Subscription",
          path: "/subscribed",
-         onClick: closeMenu
+         onClick: closeMenu,
       },
       // { icon: SettingsIcon, name: "Test", path: "/test" },
       { icon: Hr, name: "" },
@@ -236,9 +242,24 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
 
    const loginItems = [
       { icon: "h", name: "You" },
-      { icon: PermIdentityIcon, name: "Your channel", path: "/profile", onClick: closeMenu },
+      {
+         icon: PermIdentityIcon,
+         name: "Your channel",
+         path: "/profile",
+         onClick: closeMenu,
+      },
       // { icon: HistoryIcon, name: "History" },
-      { icon: SlideshowIcon, name: "Your Videos", path: "/profile" , onClick: closeMenu},
+      {
+         icon: SlideshowIcon,
+         name: "Your Videos",
+         path: "/profile",
+         onClick: closeMenu,
+      },
+      {
+         icon: VideoCallIcon,
+         name: "Upload Video",
+         onClick : () => setOpenUploadVideo(!openUploadVideo),
+      },
       // { icon: LightbulbCircleIcon, name: "Your Courses" },
       // { icon: ScheduleIcon, name: "Watch later" },
       // { icon: ContentCutIcon, name: "Your clips" },
@@ -289,25 +310,36 @@ const Menu = ({ darkMode, setDarkMode, display, setDisplay }) => {
    // }]
 
    return (
-      <Container display={display}>
-         {!display && pathVideo != "video" ? RenderItems(closedHomeItems) : ""}
-         {display ? RenderItems(homeItems) : ""}
-         {display && user ? RenderItems(loginItems) : ""}
-         {display && !user ? RenderItems(logoutItems) : ""}
-         {display ? RenderItems(exploreItems) : ""}
-         {/* {(display) ? RenderItems(darkModeItem) : ""} */}
-         {display ? (
-            <Item
-               display={display}
-               onClick={() => (darkMode == 1 ? setDarkMode(0) : setDarkMode(1))}
-            >
-               <LightModeIcon sx={{ "font-size": "2.7rem" }} />
-               <p>{darkMode ? "Dark Mode" : "Light Mode"}</p>
-            </Item>
+      <>
+         {openUploadVideo ? (
+            <UploadVideo setOpenUploadVideo={setOpenUploadVideo} />
          ) : (
             ""
          )}
-      </Container>
+         <Container display={display}>
+            {!display && pathVideo != "video"
+               ? RenderItems(closedHomeItems)
+               : ""}
+            {display ? RenderItems(homeItems) : ""}
+            {display && user ? RenderItems(loginItems) : ""}
+            {display && !user ? RenderItems(logoutItems) : ""}
+            {display ? RenderItems(exploreItems) : ""}
+            {/* {(display) ? RenderItems(darkModeItem) : ""} */}
+            {display ? (
+               <Item
+                  display={display}
+                  onClick={() =>
+                     darkMode == 1 ? setDarkMode(0) : setDarkMode(1)
+                  }
+               >
+                  <LightModeIcon sx={{ "font-size": "2.7rem" }} />
+                  <p>{darkMode ? "Dark Mode" : "Light Mode"}</p>
+               </Item>
+            ) : (
+               ""
+            )}
+         </Container>
+      </>
    );
 };
 

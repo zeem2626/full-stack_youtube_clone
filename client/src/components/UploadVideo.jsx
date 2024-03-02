@@ -15,7 +15,7 @@ const Container = styled.div`
    border-radius: 2rem;
    width: 99vw;
    height: 100vh;
-   background-color: ${({ theme }) => theme.bg}7;;
+   background-color: ${({ theme }) => theme.bg}7;
    /* background-color: #3339; */
    /* opacity: 0.3; */
    z-index: 3;
@@ -48,13 +48,12 @@ const Input = styled.input`
    cursor: pointer;
 `;
 const BodyWrapper = styled.div`
-  padding: 1rem 0;
-  display: flex;
-  width: 95%;
-  margin: auto;
-  flex-direction: column;
-
-`
+   padding: 1rem 0;
+   display: flex;
+   width: 95%;
+   margin: auto;
+   flex-direction: column;
+`;
 const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
@@ -69,7 +68,7 @@ const Wrapper = styled.div`
 const HeadingWrapper = styled.div`
    display: flex;
    justify-content: space-between;
-   padding:  1rem 2rem;
+   padding: 1rem 2rem;
 `;
 const H1 = styled.h1`
    width: 90%;
