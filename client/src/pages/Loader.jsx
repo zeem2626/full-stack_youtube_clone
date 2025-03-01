@@ -26,7 +26,7 @@ const Loader = () => {
          if (loading) {
             setMessage("Wait, Server is initialising...");
          } else {
-            setMessage("Loading...");
+            setMessage("Ruko Bhai...");
          }
       }, 3 * 1000);
    };
